@@ -138,7 +138,7 @@ public class WidgetClass extends JPanel implements MouseInputListener
          //container.setBounds(offset, offset, width-offset*2, height-offset*2);
       }
       public int getX()
-      {
+      { 
       if(!this.draggable){return this.x;}
       else{return super.getX();}
       }
@@ -160,6 +160,7 @@ public class WidgetClass extends JPanel implements MouseInputListener
       public GhostRoundedJTextField getVariableObject(){return new GhostRoundedJTextField();}
       public void setDraggable(boolean draggable){this.draggable = draggable;}
       public void setContainerVisible(boolean visible){this.isContainerVisible = visible;}
+      public boolean getContainerVisible(){return this.isContainerVisible;}
       public void mouseExited(MouseEvent e){}
       public void mouseEntered(MouseEvent e){} 
       public void mouseReleased(MouseEvent e){}
