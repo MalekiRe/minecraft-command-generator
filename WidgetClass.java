@@ -105,11 +105,11 @@ public class WidgetClass extends JPanel implements MouseInputListener
       }
       public boolean Contains(int x, int y)
       {
-         if(this.getX() < x && this.getY() < y)
+         if((int)this.container.getLocationOnScreen().getX() < x && (int)this.container.getLocationOnScreen().getY() < y)
          {
-            if(this.getX()+this.getWidth() > x)
+            if((int)this.container.getLocationOnScreen().getX()+this.getWidth() > x)
             {
-               if(this.getY()+this.getHeight() > y)
+               if((int)this.container.getLocationOnScreen().getY()+this.getHeight() > y)
                {
                   return true;
                }
@@ -138,7 +138,7 @@ public class WidgetClass extends JPanel implements MouseInputListener
          //container.setBounds(offset, offset, width-offset*2, height-offset*2);
       }
       public int getX()
-      {
+      { 
       if(!this.draggable){return this.x;}
       else{return super.getX();}
       }
@@ -160,6 +160,7 @@ public class WidgetClass extends JPanel implements MouseInputListener
       public GhostRoundedJTextField getVariableObject(){return new GhostRoundedJTextField();}
       public void setDraggable(boolean draggable){this.draggable = draggable;}
       public void setContainerVisible(boolean visible){this.isContainerVisible = visible;}
+      public boolean getContainerVisible(){return this.isContainerVisible;}
       public void mouseExited(MouseEvent e){}
       public void mouseEntered(MouseEvent e){} 
       public void mouseReleased(MouseEvent e){}
@@ -175,6 +176,7 @@ public class WidgetClass extends JPanel implements MouseInputListener
          {
             this.container.repaint();
          }
+         this.revalidate();
          
          //this.revalidate();
       }
