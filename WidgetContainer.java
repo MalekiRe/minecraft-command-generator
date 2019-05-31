@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.event.*;
 import java.awt.geom.RoundRectangle2D.Float;
 import java.awt.geom.RoundRectangle2D;
-public class WidgetContainer extends JComponent
+public class WidgetContainer extends JLayeredPane
 {
 
    private int roundess;

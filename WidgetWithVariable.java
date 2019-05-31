@@ -12,6 +12,7 @@ public class WidgetWithVariable extends WidgetClass
    public GhostRoundedJTextField variable1 = new GhostRoundedJTextField();
    private String ghostText;
    private int borderSize = 30;
+   private int arrayIndex = 0;
    public WidgetWithVariable()
    {
       super();
@@ -33,6 +34,7 @@ public class WidgetWithVariable extends WidgetClass
       {
          this.add(variable1);
       }
+      this.variable1.setWidgetWithVariable(this);
       
    }
    public String getText()
@@ -87,6 +89,8 @@ public class WidgetWithVariable extends WidgetClass
    }
    public GhostRoundedJTextField getVariableObject(){return this.variable1;}
    public void setVariableObject(GhostRoundedJTextField variableDummy){this.variable1 = variableDummy;}
+   public int getArrayIndex(){return this.arrayIndex;}
+   public void setArrayIndex(int arrayIndex){this.arrayIndex = arrayIndex;}
    public void mouseMoved(MouseEvent e){}
    public static void main(String args[])
    {
