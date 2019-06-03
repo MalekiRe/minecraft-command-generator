@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D.Float;
 import java.awt.geom.RoundRectangle2D;
-class RoundedJTextField extends JTextField
+class RoundedJTextField extends JTextField implements Cloneable//Creates a JTextField with rounded edges
 {
     private Shape shape;
     public RoundedJTextField(int size, int x, int y, int width, int height) {
@@ -28,7 +28,11 @@ class RoundedJTextField extends JTextField
          }
          return shape.contains(x, y);
     }
-    
+    public Object clone() throws
+                   CloneNotSupportedException 
+    { 
+         return super.clone();
+    }
 public static void main(String args[])
 {
 

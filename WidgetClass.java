@@ -8,7 +8,7 @@ import java.awt.geom.RoundRectangle2D.Float;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 
-public class WidgetClass extends JPanel implements MouseInputListener
+public class WidgetClass extends JPanel implements MouseInputListener, Cloneable
 {
       protected WidgetContainer container;
       private JTextField textField;
@@ -103,7 +103,7 @@ public class WidgetClass extends JPanel implements MouseInputListener
             this.setBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight());
          }
       }
-      public boolean Contains(int x, int y)
+      public boolean Contains(int x, int y, int layerDepth)
       {
          if((int)this.container.getLocationOnScreen().getX() < x && (int)this.container.getLocationOnScreen().getY() < y)
          {
@@ -180,6 +180,11 @@ public class WidgetClass extends JPanel implements MouseInputListener
          
          //this.revalidate();
       }
+      public Object clone() throws
+                   CloneNotSupportedException 
+    { 
+        return super.clone(); 
+    } 
       
       public static void main(String args[])
       {
