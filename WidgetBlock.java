@@ -7,7 +7,8 @@ import javax.swing.event.*;
 import java.awt.geom.RoundRectangle2D.Float;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
-public class WidgetBlock extends WidgetClass
+import java.io.Serializable;
+public class WidgetBlock extends WidgetClass implements Serializable
 {
    public ArrayList<WidgetClass> variables;
    private int originalX = 0;
@@ -17,9 +18,13 @@ public class WidgetBlock extends WidgetClass
    private int widgetVariableIndex = 0;
    private boolean isContained = false;
    private boolean isBeingDragged = false;
+   public boolean mouseHeld = false;
    public WidgetBlock widgetBlockContainer;
    private WidgetBlockArray allWidgetBlocks;
    private WidgetFrame frame;
+   public DragAndDropWidgetMenu panel;
+   boolean usingFrame = true;
+   boolean isSquished = true;
    public WidgetBlock()
    {
       super();
@@ -34,6 +39,12 @@ public class WidgetBlock extends WidgetClass
    public void setWidgetFrame(WidgetFrame frame)
    {
       this.frame = frame;
+      this.usingFrame = true;
+   }
+   public void setPanel(DragAndDropWidgetMenu panel)
+   {
+      this.panel = panel;
+      this.usingFrame = false;
    }
    public void setAllWidgetBlocks(WidgetBlockArray widgetBlockArray)
    {
@@ -114,7 +125,7 @@ public class WidgetBlock extends WidgetClass
    public void reload() //Function to reload the widgetBlock
    {
       super.reload(); //Calls the reload from the widgetClass class
-      variables.get(i1).reload();
+      //variables.get(i1).reload();
       if(variables != null) //If there are variables
       {
          int spacer = 20;//How far apart the objects should be.
@@ -184,6 +195,12 @@ public class WidgetBlock extends WidgetClass
       this.originalX = this.getX();
       this.originalY = this.getY();
       System.out.println(this.getText());
+      System.out.println("oioioi");
+      if(this.panel != null)
+      {
+         System.out.println("fdsfs");
+         this.panel.duplicateWidget(this, e.getX(), e.getY());
+      }
       
    }
    public void resetPosition()
@@ -193,6 +210,7 @@ public class WidgetBlock extends WidgetClass
    }
    public void mouseReleased(MouseEvent e)
    {
+      this.mouseHeld = false;
       int lowestLevelWidgetContained = -1;
       int lowestWidgetIndex = -1;
       int lowestVariableIndex = -1;

@@ -38,9 +38,7 @@ public class RunCommandGenerator
       
       allWidgetBlocks.addCommandWidgetClone(setBlockCommand, 100, 50);
       
-      RightClickPopupMenu PopupMenu = new RightClickPopupMenu();
-      PopupMenu.setBounds(0, 10, 100, 100);
-      frame.getLayeredPane().add(PopupMenu);
+      
       frame.setVisible(true);
       frame.repaint();
       frame.revalidate();

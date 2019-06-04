@@ -13,6 +13,8 @@ public class WidgetBlockArray
    public UnoptimizedDeepCopy copyer;
    ComponentMover cm = new ComponentMover();
    public WidgetFrame frame;
+   public DragAndDropWidgetMenu panel;
+   boolean usingFrame = false;
    public boolean add(WidgetBlock block)
    {
       block.setAllWidgetBlocks(this);
@@ -30,7 +32,14 @@ public class WidgetBlockArray
             this.add((CommandWidget)block.getAllVariablesInArray().get(i2));
          }
       }
-      block.setWidgetFrame(this.frame);
+      if(this.usingFrame)
+      {
+         block.setWidgetFrame(this.frame);
+      }
+      else
+      {
+         block.setPanel(this.panel);
+      }
       return this.arrayList.add(block);
       
    }
@@ -40,18 +49,28 @@ public class WidgetBlockArray
    }
    public void addCommandWidgetClone(CommandWidget widget, int x, int y)
    {
-      Object obj = copyer.copy(widget);
-      CommandWidget commandWidget;
-      if(obj instanceof CommandWidget)
+      if(widget != null && copyer.copy(widget) != null)
       {
-         commandWidget = (CommandWidget)obj;
-         commandWidget.setX(x);
-         commandWidget.setY(y);
-         this.add(commandWidget);
-         frame.addWidgetBlock(commandWidget);
+         Object obj = copyer.copy(widget);
          
+         if(obj instanceof CommandWidget)
+         {
+            CommandWidget commandWidget = (CommandWidget)obj;
+            commandWidget.setX(x);
+            commandWidget.setY(y);
+            this.add(commandWidget);
+            if(usingFrame == true)
+            {
+               frame.addWidgetBlock(commandWidget);
+            }
+            else
+            {
+               panel.add(commandWidget);
+            }
+            commandWidget.setBounds(x, y, commandWidget.getWidth(), commandWidget.getHeight());
+            
+         }
       }
-      
       
    }
    public int size()

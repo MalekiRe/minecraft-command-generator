@@ -30,6 +30,7 @@ public class WidgetFrame extends JFrame implements MouseInputListener
    {
       this.widgetBlockArray = array;
       this.widgetBlockArray.frame = this;
+      this.widgetBlockArray.usingFrame = true;
    }
    public void changeLayerOfWidgetBlock()
    {
@@ -67,6 +68,11 @@ public class WidgetFrame extends JFrame implements MouseInputListener
       this.getLayeredPane().add(block, numberZero, numberOfBlocksAdded*-1);
       
       
+   }
+   public void addDragAndDropWidgetMenu(DragAndDropWidgetMenu menu)
+   {
+      this.add(menu);
+      menu.frame = this;
    }
    public void mouseExited(MouseEvent e){}
    public void mouseEntered(MouseEvent e){} 

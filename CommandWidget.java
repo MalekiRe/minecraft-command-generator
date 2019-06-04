@@ -1,10 +1,11 @@
 import java.util.ArrayList;
-public class CommandWidget extends WidgetBlock implements Cloneable
+import java.io.Serializable;
+public class CommandWidget extends WidgetBlock implements Cloneable, Serializable
 {
-   private String header = "";
+   public String header = "";
    public ArrayList<String> name = new ArrayList<String>();
    public ArrayList<String> concatFunction = new ArrayList<String>();
-   
+   boolean isSquished = true;
    public CommandWidget(String header, VariableTemplate... varTemplate)
    {
       super(0, 0, varTemplate.length*150, 100);
