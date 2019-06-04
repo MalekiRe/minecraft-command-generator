@@ -7,11 +7,12 @@ import javax.swing.event.*;
 import java.awt.geom.RoundRectangle2D.Float;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
-public class WidgetWithVariable extends WidgetClass
+public class WidgetWithVariable extends WidgetClass implements Cloneable
 {
    public GhostRoundedJTextField variable1 = new GhostRoundedJTextField();
    private String ghostText;
    private int borderSize = 30;
+   private int arrayIndex = 0;
    public WidgetWithVariable()
    {
       super();
@@ -33,8 +34,17 @@ public class WidgetWithVariable extends WidgetClass
       {
          this.add(variable1);
       }
+      this.variable1.setWidgetWithVariable(this);
+      
       
    }
+   public Object clone() throws
+                   CloneNotSupportedException 
+    { 
+         WidgetWithVariable cloned = (WidgetWithVariable)super.clone();
+         cloned.variable1 = new GhostRoundedJTextField(10);
+         return cloned;
+    }
    public String getText()
    {
       return variable1.getText();
@@ -87,6 +97,8 @@ public class WidgetWithVariable extends WidgetClass
    }
    public GhostRoundedJTextField getVariableObject(){return this.variable1;}
    public void setVariableObject(GhostRoundedJTextField variableDummy){this.variable1 = variableDummy;}
+   public int getArrayIndex(){return this.arrayIndex;}
+   public void setArrayIndex(int arrayIndex){this.arrayIndex = arrayIndex;}
    public void mouseMoved(MouseEvent e){}
    public static void main(String args[])
    {

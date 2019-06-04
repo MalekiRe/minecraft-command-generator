@@ -1,0 +1,22 @@
+<Command>
+   <Header>
+      <"/setblock">
+   <VariableTemplate>
+      <"Block">
+      <" ">
+   <VariableTemplate>
+      <"Cords">
+      <" ">
+<EndCommand>
+<Command>
+   <Header>
+   <VariableTemplate>
+      <"doStuff">
+      <"concat">
+   <VariableTemplate>
+      <"doSomeMoreStuff">
+      <"concatSomeMore">
+   <VariableTemplate>
+      <"doEvenMoreStuff Ya">
+      <"concatEvenMore Ya">
+<EndCommand>

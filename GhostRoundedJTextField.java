@@ -1,15 +1,17 @@
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import java.awt.*;  // Notice these dynamic imports
+import java.awt.*;  
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.event.*;
 import java.awt.geom.RoundRectangle2D.Float;
-import java.awt.geom.RoundRectangle2D;
+import java.awt.geom.RoundRectangle2D;//Creates a roundedJTextField that has text that appears when the text field
+//Is not foucused on and there is nothing in it.
 public class GhostRoundedJTextField extends RoundedJTextField implements MouseInputListener,FocusListener
 {
-   String ghostText = "";
+   String ghostText = "";//The text that appears when the box is not clicked.
    private int size = 10;
+   public WidgetWithVariable widgetWithVariable;
    public GhostRoundedJTextField()
    {
       super(10, 0, 0, 10, 10);
@@ -46,6 +48,13 @@ public class GhostRoundedJTextField extends RoundedJTextField implements MouseIn
       this.setText(ghostText);
       addListeners();
    }
+   public Object clone() throws
+                   CloneNotSupportedException 
+    { 
+      GhostRoundedJTextField cloned = (GhostRoundedJTextField)super.clone();
+      cloned.widgetWithVariable = null;
+      return cloned;
+    }
    public void reload()
    {
       this.repaint();
@@ -71,6 +80,14 @@ public class GhostRoundedJTextField extends RoundedJTextField implements MouseIn
       {
          this.setText(this.ghostText);
       }
+   }
+   public void setWidgetWithVariable(WidgetWithVariable dummy)
+   {
+      this.widgetWithVariable = dummy;
+   }
+   public WidgetWithVariable getWidgetWithVariable()
+   {
+      return this.widgetWithVariable;
    }
    
    public void mouseExited(MouseEvent e){}
