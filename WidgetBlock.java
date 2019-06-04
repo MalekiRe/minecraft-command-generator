@@ -201,7 +201,12 @@ public class WidgetBlock extends WidgetClass implements Serializable
          System.out.println("fdsfs");
          this.panel.duplicateWidget(this, e.getX(), e.getY());
       }
-      
+      if(this.allWidgetBlocks != null)
+      {
+         if(e.getButton() == MouseEvent.BUTTON1) {
+            this.allWidgetBlocks.showPopupMenu(this, e);
+         }
+      }
    }
    public void resetPosition()
    {

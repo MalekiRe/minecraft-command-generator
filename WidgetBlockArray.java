@@ -15,6 +15,7 @@ public class WidgetBlockArray
    public WidgetFrame frame;
    public DragAndDropWidgetMenu panel;
    boolean usingFrame = false;
+   PopupMenu popupMenu = new PopupMenu();
    public boolean add(WidgetBlock block)
    {
       block.setAllWidgetBlocks(this);
@@ -72,6 +73,15 @@ public class WidgetBlockArray
          }
       }
       
+   }
+   public void showPopupMenu(WidgetBlock widget, MouseEvent e)
+   {
+      this.frame.mousePressed(e);
+   }
+   public void addPopupMenu(PopupMenu popupMenu)
+   {
+      this.popupMenu = popupMenu;
+      this.popupMenu.allWidgetBlocks = this;
    }
    public int size()
    {

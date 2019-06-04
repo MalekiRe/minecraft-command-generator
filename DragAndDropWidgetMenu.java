@@ -94,12 +94,12 @@ public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
          if(cumulativeWidth+this.widgetsOnPanel.get(i1).getWidth() <= this.width)
          {  
             this.widgetsOnPanel.get(i1).setX(cumulativeWidth+widthSpacer);
-            cumulativeWidth += this.widgetsOnPanel.get(i1).getWidth()+widthSpacer;
             this.widgetsOnPanel.get(i1).setBounds(cumulativeWidth, cumulativeHeight, this.widgetsOnPanel.get(i1).getWidth(), this.widgetsOnPanel.get(i1).getHeight());
+            cumulativeWidth += this.widgetsOnPanel.get(i1).getWidth()+widthSpacer;
          }
          else
          {  ////IMPORTANT CHANGE THIS i1-1 Later so it chatches when it is negative.
-            System.out.println("hey");
+           
             cumulativeHeight += this.widgetsOnPanel.get(i1-1).getHeight()+heightSpacer;
             cumulativeWidth = widthSpacer;
             this.widgetsOnPanel.get(i1).setX(cumulativeWidth);
@@ -152,6 +152,8 @@ public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
    {  
       UnoptimizedDeepCopy myCopyer = new UnoptimizedDeepCopy();
       WidgetBlockArray allWidgetBlocks = new WidgetBlockArray();
+      PopupMenu popupMenu = new PopupMenu();
+      allWidgetBlocks.addPopupMenu(popupMenu);
       FileParser fileParser = new FileParser();
       ArrayList<CommandWidget> commandWidgets = fileParser.getFileParse("commandGeneratorFile");
       allWidgetBlocks.addCopyer(myCopyer);
@@ -168,6 +170,14 @@ public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
          myWidgetPane.getPane().addCommandWidget(commandWidgets.get(i1));
       }
       myWidgetPane.repaint();
+      frame.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mousePressed(MouseEvent e) {showPopup(e);}
+      @Override
+      public void mouseReleased(MouseEvent e) {showPopup(e);}
+      private void showPopup(MouseEvent e) {if(e.isPopupTrigger()) {
+      popupMenu.show(e.getComponent(),e.getX(), e.getY());}}});
+      frame.add(popupMenu);
       frame.add(myWidgetPane);
       
       frame.setVisible(true);
