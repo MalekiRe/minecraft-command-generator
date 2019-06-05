@@ -20,8 +20,8 @@ public class WidgetBlock extends WidgetClass implements Serializable
    private boolean isBeingDragged = false;
    public boolean mouseHeld = false;
    public WidgetBlock widgetBlockContainer;
-   private WidgetBlockArray allWidgetBlocks;
-   private WidgetFrame frame;
+   public WidgetBlockArray allWidgetBlocks;
+   public WidgetFrame frame;
    public DragAndDropWidgetMenu panel;
    boolean usingFrame = true;
    boolean isSquished = true;
@@ -173,6 +173,33 @@ public class WidgetBlock extends WidgetClass implements Serializable
          }
       }
    }
+   public ArrayList<WidgetBlock> getAllPossibleWidgets()
+   {
+      ArrayList<WidgetBlock> allPossibleWidgets = new ArrayList<WidgetBlock>();
+      for(int i1 = 0; i1 < this.getVariableArray().size(); i1++)
+      {
+         
+         
+         
+         if(this.getVariableArray().get(i1) instanceof WidgetBlock)
+         {
+            allPossibleWidgets.add((WidgetBlock)this.getVariableArray().get(i1));
+            allPossibleWidgets.addAll(((WidgetBlock)this.getVariableArray().get(i1)).getAllPossibleWidgets());
+            
+         }
+            
+         
+      }
+      return allPossibleWidgets;
+
+   }
+   public void mousePressed(MouseEvent e)
+   {
+      if(e.getButton() == MouseEvent.BUTTON3 && this.allWidgetBlocks != null) {
+            this.allWidgetBlocks.showPopupMenu(this, e.getX(), e.getY());
+            
+         }
+   }
    public void mouseMoved(MouseEvent e){}
    public void mouseDragged(MouseEvent e)
    {
@@ -195,13 +222,17 @@ public class WidgetBlock extends WidgetClass implements Serializable
       this.originalX = this.getX();
       this.originalY = this.getY();
       System.out.println(this.getText());
-      System.out.println("oioioi");
       if(this.panel != null)
       {
-         System.out.println("fdsfs");
          this.panel.duplicateWidget(this, e.getX(), e.getY());
       }
-      
+      if(this.allWidgetBlocks != null)
+      {
+         if(e.getButton() == MouseEvent.BUTTON3) {
+            this.allWidgetBlocks.showPopupMenu(this, e.getX(), e.getY());
+            
+         }
+      }
    }
    public void resetPosition()
    {
