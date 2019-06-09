@@ -221,7 +221,7 @@ public class ComponentMover extends MouseAdapter
 	public void mousePressed(MouseEvent e)
 	{
 		source = e.getComponent();
-      if(e.getButton() == MouseEvent.BUTTON3) {
+      if(e.getButton() == MouseEvent.BUTTON1) {
             int width  = source.getSize().width  - dragInsets.left - dragInsets.right;
 		int height = source.getSize().height - dragInsets.top - dragInsets.bottom;
 		Rectangle r = new Rectangle(dragInsets.left, dragInsets.top, width, height);

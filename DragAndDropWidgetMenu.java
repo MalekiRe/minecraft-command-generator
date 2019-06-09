@@ -28,7 +28,10 @@ import javax.swing.event.*;
 import java.awt.geom.RoundRectangle2D.Float;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
-
+import java.io.*;
+import java.net.URL;
+import javax.sound.sampled.*;
+import javax.swing.*;
 public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
 {
    WidgetBlockArray allWidgetBlocks;
@@ -39,8 +42,8 @@ public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
    Color color;
    Color borderColor = new Color(40, 200, 40);
    int borderSize = 12;
-   int widthSpacer = 10;
-   int heightSpacer = 10;
+   int widthSpacer = 20;
+   int heightSpacer = 20;
    int width;
    int height;
    public DragAndDropWidgetMenu(int width, int height, Color color, WidgetBlockArray allWidgetBlocks)
@@ -75,7 +78,27 @@ public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
       else {blue = 0;}
       return new Color(red, green, blue);
    }
-   
+   public void playSound(String fileName)
+   {
+      try {
+         // Open an audio input stream.
+         URL url = this.getClass().getClassLoader().getResource(fileName);
+         AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+         // Get a sound clip resource.
+         Clip clip = AudioSystem.getClip();
+         // Open audio clip and load samples from the audio input stream.
+         clip.open(audioIn);
+         clip.start();
+      } catch (UnsupportedAudioFileException e) {
+         e.printStackTrace();
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (LineUnavailableException e) {
+         e.printStackTrace();
+      }
+      
+   }
+
    @Override
    public void paintComponent(Graphics g)
    {  
@@ -94,13 +117,13 @@ public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
          if(cumulativeWidth+this.widgetsOnPanel.get(i1).getWidth() <= this.width)
          {  
             this.widgetsOnPanel.get(i1).setX(cumulativeWidth+widthSpacer);
-            cumulativeWidth += this.widgetsOnPanel.get(i1).getWidth()+widthSpacer;
             this.widgetsOnPanel.get(i1).setBounds(cumulativeWidth, cumulativeHeight, this.widgetsOnPanel.get(i1).getWidth(), this.widgetsOnPanel.get(i1).getHeight());
+            cumulativeWidth += this.widgetsOnPanel.get(i1).getWidth()+widthSpacer;
          }
          else
          {  ////IMPORTANT CHANGE THIS i1-1 Later so it chatches when it is negative.
-            System.out.println("hey");
-            cumulativeHeight += this.widgetsOnPanel.get(i1-1).getHeight()+heightSpacer;
+           
+            cumulativeHeight += heightSpacer+this.widgetsOnPanel.get(i1-1).getHeight();
             cumulativeWidth = widthSpacer;
             this.widgetsOnPanel.get(i1).setX(cumulativeWidth);
             
@@ -128,9 +151,9 @@ public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
       for(int i1 = 0; i1 < this.widgetsOnPanel.size(); i1++)
       {
          
-         if(((CommandWidget)this.widgetsOnPanel.get(i1)).header.equals(((CommandWidget)widget).header))
+         if(((CommandWidget)this.widgetsOnPanel.get(i1)).widgetName.equals(((CommandWidget)widget).widgetName))
          {
-            System.out.println("gjfj");
+            
             this.allWidgetBlocks.addCommandWidgetClone((CommandWidget)this.widgetList.get(i1), x, y);
             
          }
@@ -152,6 +175,8 @@ public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
    {  
       UnoptimizedDeepCopy myCopyer = new UnoptimizedDeepCopy();
       WidgetBlockArray allWidgetBlocks = new WidgetBlockArray();
+      PopupMenu popupMenu = new PopupMenu();
+      allWidgetBlocks.addPopupMenu(popupMenu);
       FileParser fileParser = new FileParser();
       ArrayList<CommandWidget> commandWidgets = fileParser.getFileParse("commandGeneratorFile");
       allWidgetBlocks.addCopyer(myCopyer);
@@ -168,6 +193,18 @@ public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
          myWidgetPane.getPane().addCommandWidget(commandWidgets.get(i1));
       }
       myWidgetPane.repaint();
+      frame.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mousePressed(MouseEvent e) {showPopup(e);}
+      @Override
+      public void mouseReleased(MouseEvent e) {showPopup(e);}
+      private void showPopup(MouseEvent e) {if(e.isPopupTrigger()) {
+      popupMenu.show(e.getComponent(),e.getX(), e.getY());
+      popupMenu.x = e.getX();
+      popupMenu.y = e.getY();
+      popupMenu.numberOfPopupsMade = 0;
+      }}});
+      frame.add(popupMenu);
       frame.add(myWidgetPane);
       
       frame.setVisible(true);

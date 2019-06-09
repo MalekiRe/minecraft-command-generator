@@ -1,22 +1,179 @@
 <Command>
+   <Label>
+      <"setblock">
    <Header>
-      <"/setblock">
+      <"setblock">
    <VariableTemplate>
       <"Block">
       <" ">
+      <"">
    <VariableTemplate>
       <"Cords">
       <" ">
+      <"">
+   <Color>
+      <Red:0>
+      <Green:0>
+      <Blue:255>
 <EndCommand>
 <Command>
+   <Label>
+      <"execute">
    <Header>
+      <"execute">
+   <DropDown>
+      <" ">
+      <"">
+      <"at">
+      <"as">
+   <EndDropDown>
+   <DropDown>
+      <" ">
+      <"">
+      <"@e">
+      <"@a">
+      <"@p">
+      <"@r">
+   <EndDropDown>
+   <DropDown>
+      <"">
+      <"">
+      <"">
+      <" if">
+      <" unless">
+   <EndDropDown>
    <VariableTemplate>
-      <"doStuff">
-      <"concat">
+      <"">
+      <" ">
+      <"">
    <VariableTemplate>
-      <"doSomeMoreStuff">
-      <"concatSomeMore">
+      <"RunCommand">
+      <" run ">
+      <"">
+   <Color>
+      <Red:255>
+      <Green:0>
+      <Blue:255>
+<EndCommand>
+<Command>
+   <Size>
+      <Height:40>
+      <Spacing:10>
+   <Label>
+      <"Cords">
+   <Header>
+      <"">
    <VariableTemplate>
-      <"doEvenMoreStuff Ya">
-      <"concatEvenMore Ya">
+      <"X">
+      <"">
+      <"">
+   <VariableTemplate>
+      <"Y">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"Z">
+      <" ">
+      <"">
+   <Color>
+      <Red:5>
+      <Green:255>
+      <Blue:5>
+<EndCommand>
+<Command>
+   <Label>
+      <"Summon">
+   <Header>
+      <"summon">
+   <VariableTemplate>
+      <"Entity">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"Cords">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"">
+      <"{">
+      <"}">
+   <Color>
+      <Red:25>
+      <Green:25>
+      <Blue:75>
+<EndCommand>
+<Command>
+   <Size>
+      <Height:40>
+      <Spacing:5>
+   <Label>
+      <"NBT">
+   <Header>
+      <"">
+   <VariableTemplate>
+      <"">
+      <"">
+      <"">
+   <VariableTemplate>
+      <"">
+      <",">
+      <"">
+   <Color>
+      <Red:100>
+      <Blue:150>
+      <Green:100>
+<EndCommand>
+<Command>
+   <Size>
+      <Height:20>
+      <Spacing:5>
+   <Label>
+      <"Invulnerable">
+   <Header>
+      <"Invulnerable:1b">
+   <DropDown>
+      <"">
+      <"">
+      <"">
+   <EndDropDown>
+   <Color>
+      <Red:240>
+      <Blue:10>
+      <Green:10>
+<EndCommand>
+<Command>
+   <Size>
+      <Height:20>
+      <Spacing:5>
+   <Label>
+      <"NoGravity">
+   <Header>
+      <"NoGravity:1b">
+   <DropDown>
+      <"">
+      <"">
+      <"">
+   <EndDropDown>
+   <Color>
+      <Red:240>
+      <Blue:10>
+      <Green:10>
+<EndCommand>
+<Command>
+   <Size>
+      <Height:20>
+      <Spacing:5>
+   <Label>
+      <"Invisible">
+   <Header>
+      <"Invisible:1b">
+   <DropDown>
+      <"">
+      <"">
+      <"">
+   <EndDropDown>
+   <Color>
+      <Red:240>
+      <Blue:10>
+      <Green:10>
 <EndCommand>

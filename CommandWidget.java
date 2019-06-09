@@ -3,50 +3,38 @@ import java.io.Serializable;
 public class CommandWidget extends WidgetBlock implements Cloneable, Serializable
 {
    public String header = "";
-   public ArrayList<String> name = new ArrayList<String>();
-   public ArrayList<String> concatFunction = new ArrayList<String>();
+   public ArrayList<VariableTemplate> allCommandVariables = new ArrayList<VariableTemplate>();
    boolean isSquished = true;
+   int defaultx = 65;
+   int defaulty = 65;
    public CommandWidget()
    {
-      super(0, 0, 150, 100);
+      super(0, 0, 65, 65);
+      this.setDraggable(true);
+   }
+   public CommandWidget(int x, int y, int width, int height)
+   {
+      super(x, y, width, height);
       this.setDraggable(true);
    }
    public CommandWidget(String header, VariableTemplate... varTemplate)
    {
-      super(0, 0, varTemplate.length*150, 100);
+      super(0, 0, varTemplate.length*50, 75);
       this.setHeader(header);
       for(VariableTemplate var : varTemplate)
       {
-         this.addVariable(var.getName(), var.getConcatFunc());
+         this.addVariable(var);
       }
       this.setDraggable(true);
    }
-   public CommandWidget(CommandWidget widget)
+   public CommandWidget(String header, String s1[], String startConcatFunction, String endConcatFunction)
    {
-      super(0, 0, widget.concatFunction.size()*150, 100);
+      super(0, 0, 50, 50);
+      this.setHeader(header);
       
-      this.setHeader(widget.getHeader());
-      for(int i2 = 0; i2 < widget.concatFunction.size(); i2++)
-      {
-         this.addVariable(widget.name.get(i2), widget.concatFunction.get(i2));
-      }
+      this.addVariable(new VariableTemplate("", startConcatFunction, endConcatFunction), s1);
       
-   }
-   public CommandWidget(CommandWidget widget, int x, int y)
-   {
-      
-      super(x, y, widget.concatFunction.size()*150, 100);
-      
-      this.setHeader(widget.getHeader());
-      for(int i2 = 0; i2 < widget.concatFunction.size(); i2++)
-      {
-         this.addVariable(widget.name.get(i2), widget.concatFunction.get(i2));
-      }
-      ArrayList<WidgetClass> allVarsInArray = widget.getAllVariablesInArray();
-      for(WidgetClass widgetClass : allVarsInArray)
-      {
-         
-      }
+      this.setDraggable(true);
    }
    public ArrayList<WidgetClass> getAllVarsInArray()
    {
@@ -55,37 +43,54 @@ public class CommandWidget extends WidgetBlock implements Cloneable, Serializabl
    public void setHeader(String header)
    {
       this.header = header;
+      //this.addName(header);
    }
    public String getHeader()
    {
-      this.setBounds(this.getX(), this.getY(), this.concatFunction.size()*150, 100);
-      this.setWidth(this.concatFunction.size()*150);
+      this.setBounds(this.getX(), this.getY(), this.allCommandVariables.size()*defaultx, defaulty);
+      this.setWidth(this.allCommandVariables.size()*defaultx);
+      
       return this.header;
    }
-   public void addVariable(String name, String concatFunc)
+   public void addVariable(VariableTemplate var)
    {
-      super.addVariable(name);
-      this.concatFunction.add(concatFunc);
-      this.name.add(name);
-      this.setBounds(this.getX(), this.getY(), this.concatFunction.size()*150, 100);
-      this.setWidth(this.concatFunction.size()*150);
+      super.addVariable(var.getName());
+      this.allCommandVariables.add(var);
+      this.setBounds(this.getX(), this.getY(), this.allCommandVariables.size()*defaultx, defaulty);
+      this.setWidth(this.allCommandVariables.size()*defaultx);
+   }
+   public void addVariable(VariableTemplate var, String s1[])
+   {
+      super.addVariable(var.getName(), s1);
+      this.allCommandVariables.add(var);
+      this.setBounds(this.getX(), this.getY(), this.allCommandVariables.size()*defaultx, defaulty);
+      this.setWidth(this.allCommandVariables.size()*defaultx);
    }
    public String getText()
    {
       String returnString = this.header;
+      String startConcat = "";
+      String endConcat = "";
       for(int i2 = 0; i2 < this.variables.size(); i2++)
       {
-         returnString += " "+concatFunction.get(i2)+variables.get(i2).getText();
+         startConcat = allCommandVariables.get(i2).getStartConcatFunction();
+         endConcat = allCommandVariables.get(i2).getEndConcatFunction();
+         
+         if(variables.get(i2).getText().equals(""))
+         {
+          returnString += variables.get(i2).getText();
+         }
+         else
+         {
+            returnString += startConcat+variables.get(i2).getText()+endConcat;
+         }
+         
       }
       return returnString;
    } 
-   public ArrayList<String> getNames()
+   public ArrayList<VariableTemplate> getAllCommandVariable()
    {
-      return this.name;
-   }
-   public ArrayList<String> getConcatFunctions()
-   {
-      return this.concatFunction;
+      return this.allCommandVariables;
    }
    public Object clone() throws
                    CloneNotSupportedException 

@@ -15,7 +15,7 @@ public class WidgetClass extends JPanel implements MouseInputListener, Cloneable
       private int borderThickness;
       private int borderRoundess;
       private boolean roundBorder;
-      private String widgetName;
+      public String widgetName;
       private boolean firstDraw = false;
       protected int offset = 0; //An Offset to fix glitchy sides when moving around.
       private int x;
@@ -24,8 +24,8 @@ public class WidgetClass extends JPanel implements MouseInputListener, Cloneable
       private int height;
       protected boolean draggable;
       protected boolean isContainerVisible = true;
-      
-      public WidgetClass()
+      public Color color = Color.red;
+      public WidgetClass(int doesNothingInt)
       {
          this.x = 0;
          this.y = 0;
@@ -48,7 +48,7 @@ public class WidgetClass extends JPanel implements MouseInputListener, Cloneable
       }
       public WidgetClass(int x, int y, int width, int height, boolean isContainerVisible)
       {
-         this();
+         this(0);
          this.width = width+(offset*2);
          this.height = height+(offset*2);
          this.x = x-offset;
@@ -73,6 +73,17 @@ public class WidgetClass extends JPanel implements MouseInputListener, Cloneable
          
 
          
+      }
+      public int getLabelWidth()
+      {
+         if(this.container.text != null && !this.container.text.equals(""))
+         {
+            return this.container.stringWidth;
+         }
+         else
+         {
+            return 0;
+         }
       }
       public void addName(String widgetName)
       {
@@ -150,15 +161,28 @@ public class WidgetClass extends JPanel implements MouseInputListener, Cloneable
       }
       public int getWidth()
       {
-      if(!this.draggable){return this.width;}
-      else{return super.getWidth();}
-      }
-      public int getHeight()
-      {
-      if(!this.draggable){return this.height;}
-      else{return super.getHeight();}
+         return this.width;
+      
       }
       
+      public int getHeight()
+      {
+         return this.height;
+      }
+      
+      public Color getColor()
+      {
+         return this.color;
+      }
+      public void setColor(Color color)
+      {
+         this.color = color;
+         this.container.setColor(this.color);
+      }
+      public void setWidgetName(String name)
+      {
+         this.widgetName = name;
+      }
       public GhostRoundedJTextField getVariableObject(){return new GhostRoundedJTextField();}
       public void setDraggable(boolean draggable){this.draggable = draggable;}
       public void setContainerVisible(boolean visible){this.isContainerVisible = visible;}
@@ -173,12 +197,15 @@ public class WidgetClass extends JPanel implements MouseInputListener, Cloneable
       
       public void reload()
       {
+         container.setBounds(offset, offset, this.getWidth(), this.getHeight());
+         super.setBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight());
          this.repaint();
          if(this.isContainerVisible)
          {
             this.container.repaint();
          }
          this.revalidate();
+         
          
          //this.revalidate();
       }
