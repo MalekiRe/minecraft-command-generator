@@ -1,11 +1,14 @@
-public class VariableTemplate
+import java.io.Serializable;
+public class VariableTemplate implements Serializable
 {
    String name = "";
-   String concatFunc = "";
-   public VariableTemplate(String name, String concatFunc)
+   String startConcatFunction = "";
+   String endConcatFunction = "";
+   public VariableTemplate(String name, String startConcatFunction, String endConcatFunction)
    {
       this.name = name;
-      this.concatFunc = concatFunc;
+      this.startConcatFunction = startConcatFunction;
+      this.endConcatFunction = endConcatFunction;
    }
    public String getName()
    {
@@ -18,11 +21,22 @@ public class VariableTemplate
          return "";
       }
    }
-   public String getConcatFunc()
+   public String getStartConcatFunction()
    {
-      if(this.concatFunc != null)
+      if(this.startConcatFunction != null)
       {
-         return this.concatFunc;
+         return this.startConcatFunction;
+      }
+      else
+      {
+         return "";
+      }
+   }
+   public String getEndConcatFunction()
+   {
+      if(this.endConcatFunction != null)
+      {
+         return this.endConcatFunction;
       }
       else
       {

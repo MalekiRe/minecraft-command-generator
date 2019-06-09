@@ -25,22 +25,52 @@ public class RunCommandGenerator
    {  
       UnoptimizedDeepCopy myCopyer = new UnoptimizedDeepCopy();
       WidgetBlockArray allWidgetBlocks = new WidgetBlockArray();
+      PopupMenu popupMenu = new PopupMenu();
+      allWidgetBlocks.addPopupMenu(popupMenu);
+      FileParser fileParser = new FileParser();
+      ArrayList<CommandWidget> commandWidgets = fileParser.getFileParse("commandGeneratorFile");
       allWidgetBlocks.addCopyer(myCopyer);
       WidgetFrame frame = new WidgetFrame("Test Frame");
       frame.setSize(800, 800);
       frame.setLayout(null);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.addWidgetBlockArray(allWidgetBlocks);
-      CommandWidget setBlockCommand = new CommandWidget("/setblock", new VariableTemplate("Block", ""), new VariableTemplate("Cords", ""));
+      DragAndDropWidgetHolder myWidgetPane = new DragAndDropWidgetHolder(600, 400, new Color(50, 100, 25), allWidgetBlocks);
       
-      allWidgetBlocks.addCommandWidgetClone(setBlockCommand, 20, 40);
-      
-      
-      allWidgetBlocks.addCommandWidgetClone(setBlockCommand, 100, 50);
+      //CommandWidget setBlockCommand = new CommandWidget("/setblock", new VariableTemplate("Block", ""), new VariableTemplate("Cords", ""));
+      for(int i1 = 0; i1 < commandWidgets.size(); i1++)
+      {
+         commandWidgets.get(i1).reload();
+         myWidgetPane.getPane().addCommandWidget(commandWidgets.get(i1));
+      }
+      try{
+      CompilationWidget compilationWidget = new CompilationWidget();
+      compilationWidget.allWidgetBlocks = allWidgetBlocks;
+      frame.add(compilationWidget);
+      myWidgetPane.repaint();
+      frame.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mousePressed(MouseEvent e) {showPopup(e);}
+      @Override
+      public void mouseReleased(MouseEvent e) {showPopup(e);}
+      private void showPopup(MouseEvent e) {if(e.isPopupTrigger()) {
+      popupMenu.show(e.getComponent(),e.getX(), e.getY());
+      popupMenu.x = e.getX();
+      popupMenu.y = e.getY();
+      popupMenu.numberOfPopupsMade = 0;
+      }}});
+      frame.add(popupMenu);
+      frame.add(myWidgetPane);
       
       
       frame.setVisible(true);
       frame.repaint();
       frame.revalidate();
+      }
+      catch(Exception e)
+      {
+         e.printStackTrace();
+      }
+
    }
 }

@@ -1,22 +1,75 @@
 <Command>
+   <Label>
+      <"setblock">
    <Header>
-      <"/setblock">
+      <"setblock">
    <VariableTemplate>
       <"Block">
       <" ">
+      <"">
    <VariableTemplate>
       <"Cords">
       <" ">
+      <"">
+   <Color>
+      <Red:0>
+      <Green:0>
+      <Blue:255>
 <EndCommand>
 <Command>
+   <Label>
+      <"execute">
    <Header>
+      <"execute">
+   <DropDown>
+      <" ">
+      <"">
+      <"as">
+      <"at">
+   <EndDropDown>
+   <DropDown>
+      <" ">
+      <"">
+      <"@e">
+      <"@a">
+      <"@p">
+      <"@r">
+   <EndDropDown>
+   <DropDown>
+      <"">
+      <"">
+      <"">
+      <" if">
+      <" unless">
+   <EndDropDown>
    <VariableTemplate>
-      <"doStuff">
-      <"concat">
+      <"RunCommand">
+      <" run ">
+      <"">
+   <Color>
+      <Red:255>
+      <Green:0>
+      <Blue:255>
+<EndCommand>
+<Command>
+   <Label>
+      <"Cords">
+   <Header>
+      <"">
    <VariableTemplate>
-      <"doSomeMoreStuff">
-      <"concatSomeMore">
+      <"X">
+      <"">
+      <"">
    <VariableTemplate>
-      <"doEvenMoreStuff Ya">
-      <"concatEvenMore Ya">
+      <"Y">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"Z">
+      <" ">
+      <"">
+   <Color>
+      <Red:5>
+      <Green:255>
+      <Blue:5>
 <EndCommand>

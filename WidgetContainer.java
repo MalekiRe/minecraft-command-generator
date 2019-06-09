@@ -11,8 +11,9 @@ public class WidgetContainer extends JLayeredPane implements Cloneable
 
    private int roundess;
    private boolean roundBorder;
-   private String text = "";
-   private Color color;
+   public String text = "";
+   public Color color;
+   public int stringWidth = 0;
    public WidgetContainer()
    {
       this.roundess = 10;
@@ -43,6 +44,7 @@ public class WidgetContainer extends JLayeredPane implements Cloneable
       {
          graphics.setColor(Color.black);
          graphics.drawString(this.text, 0, this.getHeight()/2);
+         this.stringWidth = graphics.getFontMetrics().stringWidth(text);
       }
    }
    public void reload()

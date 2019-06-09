@@ -13,28 +13,32 @@ public class WidgetBlock extends WidgetClass implements Serializable
    public ArrayList<WidgetClass> variables;
    private int originalX = 0;
    private int originalY = 0;
+   public int defaultHeight = 0;
+   public boolean containsAnotherWidgetBlock = false;
    private int level = 0;
    public int layerLevel = 0;
    private int widgetVariableIndex = 0;
-   private boolean isContained = false;
+   public boolean isContained = false;
    private boolean isBeingDragged = false;
    public boolean mouseHeld = false;
    public WidgetBlock widgetBlockContainer;
-   private WidgetBlockArray allWidgetBlocks;
-   private WidgetFrame frame;
+   public WidgetBlockArray allWidgetBlocks;
+   public WidgetFrame frame;
    public DragAndDropWidgetMenu panel;
    boolean usingFrame = true;
    boolean isSquished = true;
+   int arrayPosition = 0;
+   
    public WidgetBlock()
    {
-      super();
+      super(0);
       variables = new ArrayList<WidgetClass>();
    }
    public WidgetBlock(int x, int y, int width, int height)
    {
       super(x, y, width, height, true);
       this.variables = new ArrayList<WidgetClass>();
-      
+      this.defaultHeight = height;
    }
    public void setWidgetFrame(WidgetFrame frame)
    {
@@ -52,27 +56,49 @@ public class WidgetBlock extends WidgetClass implements Serializable
    }
    public void addVariable(String varName)
    {
-      addVariable(new WidgetWithVariable(10, 10, 10, 10, varName, false));
+      addVariable(new WidgetWithVariable(10, 10, this.getWidth(), this.getHeight(), varName, false));
+   }
+   public void addVariable(String varName, String[] s1)
+   {
+      addVariable(new WidgetWithVariable(10, 10, this.getHeight(), this.getHeight(), varName, false, s1));
+      
+   }
+   
+   
+   public void setColor(Color color)
+   {
+      this.container.color = color;
    }
    public void addVariable(WidgetWithVariable variable)
    {
-      variable.setBounds(50+(this.variables.size()*100), 0, 100, 100);
+      variable.setBounds(10+(this.variables.size()*this.getWidth()), 0, this.getHeight(), this.getHeight());
+      variable.reload();
       
       
+      if(variable.isUsingDropDown == false)
+      {
+         this.add(variable.getVariableObject());
+      }
+      else
+      {
+         this.add(variable.dropDown);
+      }
       this.variables.add(variable);
-      this.add(variable.getVariableObject());
       this.reload();
       
    }
    public void switchVariable(WidgetBlock widget, int index)
    {
+      this.containsAnotherWidgetBlock = true;
       widget.isContained = true;
       widget.setLevel(this.getLevel()+1);
       widget.setWidgetBlockContainer(this);
       GhostRoundedJTextField dummy1 = this.variables.get(index).getVariableObject();
       
       
-      
+      this.setHeight(widget.getHeight()+30);
+      this.reload();
+      this.containsAnotherWidgetBlock = true;
       Component[] components = this.getComponents();
       for(int i1 = 0; i1 < components.length; i1++)
       {          
@@ -81,8 +107,18 @@ public class WidgetBlock extends WidgetClass implements Serializable
             widget.setWidgetVariableIndex(i1);
        
          }
-         components[i1].enable(false); 
+         if(components[i1] instanceof JComboBox)
+         {
+               components[i1].enable(true);
+            
+         }
+         else
+         {
+            components[i1].enable(false);
+         }
+          
       }
+      
       this.variables.set(index, widget);
       for(int i2 = 0; i2 < variables.size(); i2++)
       {
@@ -92,10 +128,11 @@ public class WidgetBlock extends WidgetClass implements Serializable
          }
          else
          {
+            
             this.variables.get(i2).getVariableObject().enable(true);
          }
       }
-   
+      
       
       this.reload();
       
@@ -128,23 +165,40 @@ public class WidgetBlock extends WidgetClass implements Serializable
       //variables.get(i1).reload();
       if(variables != null) //If there are variables
       {
-         int spacer = 20;//How far apart the objects should be.
-         int cumulativeWidth = 0;//Self-Explanitory
+         boolean doesThisHaveAWidgetBlock = false;
+         int spacer = 0;//How far apart the objects should be.
+         int cumulativeWidth = this.getLabelWidth();//Self-Explanitory
          for(int i1 = 0; i1 < variables.size(); i1++)
          {
 
             if(variables.get(i1).draggable == true)
-            {//Spacing problem cuased by the getWidth method. Not the same for both the widbet block adn j text field.
-               variables.get(i1).setBounds(this.getX()+cumulativeWidth, this.getY(), variables.get(i1).getWidth(), variables.get(i1).getHeight());
+            {
+               variables.get(i1).setBounds(this.getX()+cumulativeWidth, this.getY()-((this.defaultHeight-this.getHeight())/2), variables.get(i1).getWidth(), variables.get(i1).getHeight());
                cumulativeWidth += variables.get(i1).getWidth();
+               doesThisHaveAWidgetBlock = true;
             }
             else
             {
-               variables.get(i1).setBounds(spacer+cumulativeWidth, 0, variables.get(i1).getWidth(), variables.get(i1).getHeight());
+               
+               variables.get(i1).setBounds(spacer+cumulativeWidth, -((this.defaultHeight-this.getHeight())/2), variables.get(i1).getWidth(), variables.get(i1).getHeight());
+               //this.getComponents()[i1].setBounds(spacer+cumulativeWidth, ((this.defaultHeight-this.getHeight())), variables.get(i1).getWidth(), variables.get(i1).getHeight());
+
+               cumulativeWidth += variables.get(i1).getWidth();
             }
-            cumulativeWidth += variables.get(i1).getWidth();
+            
             variables.get(i1).reload();
+            
          }
+         this.setWidth(cumulativeWidth);
+         super.reload();
+         //this.widgetContainer.setWidth(cumulativeWidth*4);
+         if(this.containsAnotherWidgetBlock == false)
+         {
+            this.setHeight(this.defaultHeight);
+         }
+         
+         this.containsAnotherWidgetBlock = doesThisHaveAWidgetBlock;
+         
       }
       this.originalX = this.getX();//Setting orignal x and y so if we move the object and drage it back into place it will go where it should.
       this.originalY = this.getY();
@@ -173,6 +227,33 @@ public class WidgetBlock extends WidgetClass implements Serializable
          }
       }
    }
+   public ArrayList<WidgetBlock> getAllPossibleWidgets()
+   {
+      ArrayList<WidgetBlock> allPossibleWidgets = new ArrayList<WidgetBlock>();
+      for(int i1 = 0; i1 < this.getVariableArray().size(); i1++)
+      {
+         
+         
+         
+         if(this.getVariableArray().get(i1) instanceof WidgetBlock)
+         {
+            allPossibleWidgets.add((WidgetBlock)this.getVariableArray().get(i1));
+            allPossibleWidgets.addAll(((WidgetBlock)this.getVariableArray().get(i1)).getAllPossibleWidgets());
+            
+         }
+            
+         
+      }
+      return allPossibleWidgets;
+
+   }
+   public void mousePressed(MouseEvent e)
+   {
+      if(e.getButton() == MouseEvent.BUTTON3 && this.allWidgetBlocks != null) {
+            this.allWidgetBlocks.showPopupMenu(this, e.getX(), e.getY());
+            
+         }
+   }
    public void mouseMoved(MouseEvent e){}
    public void mouseDragged(MouseEvent e)
    {
@@ -194,14 +275,18 @@ public class WidgetBlock extends WidgetClass implements Serializable
    {
       this.originalX = this.getX();
       this.originalY = this.getY();
-      System.out.println(this.getText());
-      System.out.println("oioioi");
+      
       if(this.panel != null)
       {
-         System.out.println("fdsfs");
          this.panel.duplicateWidget(this, e.getX(), e.getY());
       }
-      
+      if(this.allWidgetBlocks != null)
+      {
+         if(e.getButton() == MouseEvent.BUTTON3) {
+            this.allWidgetBlocks.showPopupMenu(this, e.getX(), e.getY());
+            
+         }
+      }
    }
    public void resetPosition()
    {
@@ -266,6 +351,7 @@ public class WidgetBlock extends WidgetClass implements Serializable
          if(this.isContained == false)
          {
             this.allWidgetBlocks.get(lowestWidgetIndex).switchVariable(this, lowestVariableIndex);
+            
             this.isContained = true;
          }
       }
@@ -281,10 +367,18 @@ public class WidgetBlock extends WidgetClass implements Serializable
             
             if(dummy2 instanceof GhostRoundedJTextField)
             {
-               
+                  boolean hasWidgetBlock = false;
                   GhostRoundedJTextField dummy = (GhostRoundedJTextField)dummy2;
                   this.getWidgetBlockContainer().variables.set(this.getWidgetVariableIndex(), dummy.getWidgetWithVariable());
-                  
+                  for(int i1 = 0; i1 < this.getWidgetBlockContainer().variables.size(); i1++)
+                  {
+                     if(this.getWidgetBlockContainer().variables.get(i1) instanceof WidgetBlock)
+                     {
+                        hasWidgetBlock = true;  
+                     }
+                  }
+                  this.getWidgetBlockContainer().containsAnotherWidgetBlock = hasWidgetBlock;
+                  this.getWidgetBlockContainer().reload();
                   
             }
          }
@@ -394,6 +488,7 @@ public class WidgetBlock extends WidgetClass implements Serializable
       widget1.setWidgetFrame(frame);
       widget2.setWidgetFrame(frame);
       widget3.setWidgetFrame(frame);
+      String s1[] = {"1", "2"};
       WidgetWithVariable test3 = new WidgetWithVariable(40, 40 , 100, 100, "test", false);
       WidgetWithVariable test1 = new WidgetWithVariable(30, 30, 400, 100, "test", false);
       WidgetWithVariable test2 = new WidgetWithVariable(10, 10, 10, 10, "test", false);
@@ -404,6 +499,7 @@ public class WidgetBlock extends WidgetClass implements Serializable
       widget2.addVariable(test3);
       widget2.addVariable(test4);
       widget1.setDraggable(true);
+      widget1.addVariable("bla bla", s1);
       widget3.setDraggable(true);
       widget1.addVariable(test1);
       widget1.addVariable(test2);
