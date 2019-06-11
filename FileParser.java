@@ -111,12 +111,12 @@ public class FileParser
             {
                i1++;
                int height = 0;
-               int spacing = 0;
+               int width = 0;
+               width = Integer.parseInt(strings.get(i1+1).substring(13, strings.get(i1+1).length()-1));
+               i1++;
                height = Integer.parseInt(strings.get(i1+1).substring(14, strings.get(i1+1).length()-1));
                i1++;
-               spacing = Integer.parseInt(strings.get(i1+1).substring(15, strings.get(i1+1).length()-1));
-               i1++;
-               commandWidgetDummy = new CommandWidget(0, 0, 75, height);
+               commandWidgetDummy = new CommandWidget(0, 0, width, height);
             }
             if(strings.get(i1+1).equals("   <Label>"))
             {

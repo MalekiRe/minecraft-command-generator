@@ -57,8 +57,8 @@
 <EndCommand>
 <Command>
    <Size>
+      <Width:40>
       <Height:40>
-      <Spacing:10>
    <Label>
       <"Cords">
    <Header>
@@ -104,8 +104,8 @@
 <EndCommand>
 <Command>
    <Size>
+      <Width:40>
       <Height:40>
-      <Spacing:5>
    <Label>
       <"NBT">
    <Header>
@@ -125,8 +125,8 @@
 <EndCommand>
 <Command>
    <Size>
+      <Width:20>
       <Height:20>
-      <Spacing:5>
    <Label>
       <"Invulnerable">
    <Header>
@@ -143,8 +143,8 @@
 <EndCommand>
 <Command>
    <Size>
+      <Width:20>
       <Height:20>
-      <Spacing:5>
    <Label>
       <"NoGravity">
    <Header>
@@ -161,8 +161,8 @@
 <EndCommand>
 <Command>
    <Size>
+      <Width:20>
       <Height:20>
-      <Spacing:5>
    <Label>
       <"Invisible">
    <Header>
@@ -176,4 +176,66 @@
       <Red:240>
       <Blue:10>
       <Green:10>
+<EndCommand>
+<Command>
+   <Size>
+      <Width:150>
+      <Height:150>
+   <Label>
+      <"Enchant">
+   <Header>
+      <"enchant">
+   <VariableTemplate>
+      <"player">
+      <" ">
+      <"">
+   <DropDown>
+      <" ">
+      <"">
+      <"aqua_affinity">
+      <"bane_of_arthropods">
+      <"blast_protection">
+      <"channeling">
+      <"binding_curse">
+      <"vanishing_curse">
+      <"depth_strider">
+      <"efficiency">
+      <"feather_falling">
+      <"fire_aspect">
+      <"fire_protection">
+      <"flame">
+      <"fortune">
+      <"frost_walker">
+      <"impaling">
+      <"infinity">
+      <"knockback">
+      <"looting">
+      <"loyalty">
+      <"luck_of_the_sea">
+      <"lure">
+      <"mending">
+      <"multishot">
+      <"piercing">
+      <"power">
+      <"projectile_protection">
+      <"protection">
+      <"punch">
+      <"quick_charge">
+      <"respiration">
+      <"riptide">
+      <"sharpness">
+      <"silk_touch">
+      <"smite">
+      <"sweeping">
+      <"thorns">
+      <"unbreaking">
+   <EndDropDown>
+   <VariableTemplate>
+      <"Level">
+      <" ">
+      <"">
+   <Color>
+      <Red:0>
+      <Green:30>
+      <Blue:200>
 <EndCommand>

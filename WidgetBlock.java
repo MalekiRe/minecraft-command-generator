@@ -311,6 +311,14 @@ public class WidgetBlock extends WidgetClass implements Serializable
       
       if(this.panel != null)
       {
+         if(Math.random() >= 0.5)
+         {
+            this.playSound("Pop1.wav");
+         }
+         else
+         {
+            this.playSound("Pop2.wav");  
+         }
          this.panel.duplicateWidget(this, e.getX()+5, e.getY()+5);
       }
       if(this.allWidgetBlocks != null)

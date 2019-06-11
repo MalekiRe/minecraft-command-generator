@@ -29,6 +29,9 @@ import java.awt.geom.RoundRectangle2D.Float;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import java.io.*;
+import java.net.URL;
+import javax.sound.sampled.*;
+import javax.swing.*;
 public class CompilationWidget extends JButton implements ActionListener
 {
    
@@ -50,9 +53,30 @@ public class CompilationWidget extends JButton implements ActionListener
             ea.printStackTrace();
           }
       }
+      public void playSound(String fileName)
+   {
+      try {
+         // Open an audio input stream.
+         URL url = this.getClass().getClassLoader().getResource(fileName);
+         AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+         // Get a sound clip resource.
+         Clip clip = AudioSystem.getClip();
+         // Open audio clip and load samples from the audio input stream.
+         clip.open(audioIn);
+         clip.start();
+      } catch (UnsupportedAudioFileException e) {
+         e.printStackTrace();
+      } catch (IOException e) {
+         e.printStackTrace();
+      } catch (LineUnavailableException e) {
+         e.printStackTrace();
+      }
+      
+   }
    public void compileCommands()
       throws IOException {
       try{
+         this.playSound("Bell.wav");
        String str = "Hello";
        BufferedWriter writer = new BufferedWriter(new FileWriter("GeneratedFunction.mcfunction"));
        for(int i1 = 0; i1 < allWidgetBlocks.size(); i1++)

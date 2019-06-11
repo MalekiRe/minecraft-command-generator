@@ -11,6 +11,7 @@ import java.io.*;
 import java.net.URL;
 import javax.sound.sampled.*;
 import javax.swing.*;
+import java.util.Random;
 public class WidgetBlockArray
 {
    public ArrayList<WidgetBlock> arrayList = new ArrayList<WidgetBlock>();
@@ -77,7 +78,17 @@ public class WidgetBlockArray
    {
       if(widget != null)
       {
-         this.playSound("Pop.wav");
+         
+         /*
+         if(Math.random() <= 0.5)
+         {
+            this.playSound("Pop2.wav");
+         }
+         else
+         {
+            this.playSound("Pop1.wav");
+         }
+         */
          WidgetFrame tempFrame = widget.frame;
          DragAndDropWidgetMenu tempPanel = widget.panel;
          widget.allWidgetBlocks = null;
