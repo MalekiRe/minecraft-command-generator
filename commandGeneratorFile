@@ -1,179 +1,341 @@
 <Command>
    <Label>
-      <"setblock">
+      <"Grouper">
    <Header>
-      <"setblock">
+      <"">
    <VariableTemplate>
-      <"Block">
+      <"">
+      <"">
+      <"">
+   <VariableTemplate>
+      <"">
+      <"\n">
+      <"">
+   <Color>
+      <Red:200>
+      <Green:75>
+      <Blue:200>
+<EndCommand>
+<Command>
+   <Label>
+      <"selector">
+   <Header>
+      <"">
+   <DropDown>
+      <"">
+      <"">
+      <"@e">
+      <"@p">
+      <"@r">
+      <"@s">
+   <EndDropDown>
+   <VariableTemplate>
+      <"Selector">
+      <"">
+      <"">
+   <Color>
+      <Red:0>
+      <Green:25>
+      <Blue:255>
+<EndCommand>
+<Command>
+   <Label>
+      <"whisper">
+   <Header>
+      <"whisper">
+   <VariableTemplate>
+      <"player">
       <" ">
       <"">
    <VariableTemplate>
-      <"Cords">
+      <"msg">
+      <" ">
+      <"">
+   <Color>
+      <Red:60>
+      <Green:20>
+      <Blue:50>
+<EndCommand>
+<Command>
+   <Label>
+      <"advancement">
+   <Header>
+      <"advancement">
+   <DropDown>
+      <" ">
+      <"">
+      <"grant">
+      <"revoke">
+      <"test">
+   <EndDropDown>
+   <VariableTemplate>
+      <"player">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"advancement">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"criterion">
+      <" ">
+      <"">
+   <Color>
+      <Red:100>
+      <Green:0>
+      <Blue:0>
+<EndCommand>
+<Command>
+   <Label>
+      <"clear">
+   <Header>
+      <"clear">
+   <VariableTemplate>
+      <"player">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"item">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"DV">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"amount taken">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"data tag">
+      <" ">
+      <"">
+   <Color>
+      <Red:200>
+      <Green:0>
+      <Blue:100>
+<EndCommand>
+<Command>
+   <Label>
+      <"data block">
+   <Header>
+      <"data">
+   <DropDown>
+      <" ">
+      <"">
+      <"get">
+      <"merge">
+      <"remove">
+   <EndDropDown>
+   <VariableTemplate>
+      <"block">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"pos">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"path">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"scale">
+      <" ">
+      <"">
+   <Color>
+      <Red:100>
+      <Green:200>
+      <Blue:50>
+<EndCommand>
+<Command>
+   <Label>
+      <"data mob">
+   <Header>
+      <"data">
+   <DropDown>
+      <" ">
+      <"">
+      <"get">
+      <"merge">
+      <"remove">
+   <EndDropDown>
+   <VariableTemplate>
+      <"block">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"target">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"path">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"scale">
+      <" ">
+      <"">
+   <Color>
+      <Red:100>
+      <Green:200>
+      <Blue:50>
+<EndCommand>
+<Command>
+   <Label>
+      <"effect">
+   <Header>
+      <"effect>
+   <VariableTemplate>
+      <"player">
+      <" ">
+      <"">
+   <DropDown>
+      <" minecraft:">
+      <"">
+      <"absorption">
+      <"unluck">
+      <"bad_omen">
+      <"blindness">
+      <"conduit_power">
+      <"dolphins_grace">
+      <"fire_resistance">
+      <"glowing">
+      <"haste">
+      <"health_boost">
+      <"hero_of_the_village">
+      <"hunger">
+      <"instant_damage">
+      <"instant_health">
+      <"invisibility">
+      <"jump_boost">
+      <"levitation">
+      <"luck">
+      <"mining_fatigue">
+      <"nausea">
+      <"night_vision">
+      <"poison">
+      <"regeneration">
+      <"resistance">
+      <"saturation">
+      <"slow_falling">
+      <"slowness">
+      <"speed">
+      <"strength">
+      <"water_breathing">
+      <"weakness">
+      <"wither">
+   <EndDropDown>
+   <VariableTemplate>
+      <"amplifier">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"time">
+      <" ">
+      <"">
+   <DropDown>
+      <" ">
+      <"">
+      <"true">
+      <"false">
+   <EndDropDown>
+   <Color>
+      <Red:0>
+      <Green:100>
+      <Blue:100>
+<EndCommand>
+<Command>
+   <Label>
+      <"fill">
+   <Header>
+      <"fill">
+   <VariableTemplate>
+      <"pos1">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"pos2">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"block">
+      <" ">
+      <"">
+   <DropDown>
+      <" ">
+      <"">
+      <"destroy">
+      <"hollow">
+      <"keep">
+      <"outline">
+      <"replace">
+   <EndDropDown>
+   <Color>
+      <Red:200>
+      <Green:25>
+      <Blue:0>
+<EndCommand>
+<Command>
+   <Label>
+      <"gamemode">
+   <Header>
+      <"gamemode">
+   <DropDown>
+      <" ">
+      <"">
+      <"survival">
+      <"creative">
+      <"adventure">
+      <"spectator">
+   <EndDropDown>
+   <VariableTemplate>
+      <"Player">
       <" ">
       <"">
    <Color>
       <Red:0>
-      <Green:0>
-      <Blue:255>
-<EndCommand>
-<Command>
-   <Label>
-      <"execute">
-   <Header>
-      <"execute">
-   <DropDown>
-      <" ">
-      <"">
-      <"at">
-      <"as">
-   <EndDropDown>
-   <DropDown>
-      <" ">
-      <"">
-      <"@e">
-      <"@a">
-      <"@p">
-      <"@r">
-   <EndDropDown>
-   <DropDown>
-      <"">
-      <"">
-      <"">
-      <" if">
-      <" unless">
-   <EndDropDown>
-   <VariableTemplate>
-      <"">
-      <" ">
-      <"">
-   <VariableTemplate>
-      <"RunCommand">
-      <" run ">
-      <"">
-   <Color>
-      <Red:255>
-      <Green:0>
-      <Blue:255>
-<EndCommand>
-<Command>
-   <Size>
-      <Height:40>
-      <Spacing:10>
-   <Label>
-      <"Cords">
-   <Header>
-      <"">
-   <VariableTemplate>
-      <"X">
-      <"">
-      <"">
-   <VariableTemplate>
-      <"Y">
-      <" ">
-      <"">
-   <VariableTemplate>
-      <"Z">
-      <" ">
-      <"">
-   <Color>
-      <Red:5>
-      <Green:255>
-      <Blue:5>
-<EndCommand>
-<Command>
-   <Label>
-      <"Summon">
-   <Header>
-      <"summon">
-   <VariableTemplate>
-      <"Entity">
-      <" ">
-      <"">
-   <VariableTemplate>
-      <"Cords">
-      <" ">
-      <"">
-   <VariableTemplate>
-      <"">
-      <"{">
-      <"}">
-   <Color>
-      <Red:25>
-      <Green:25>
-      <Blue:75>
-<EndCommand>
-<Command>
-   <Size>
-      <Height:40>
-      <Spacing:5>
-   <Label>
-      <"NBT">
-   <Header>
-      <"">
-   <VariableTemplate>
-      <"">
-      <"">
-      <"">
-   <VariableTemplate>
-      <"">
-      <",">
-      <"">
-   <Color>
-      <Red:100>
-      <Blue:150>
       <Green:100>
+      <Blue:200>
 <EndCommand>
 <Command>
-   <Size>
-      <Height:20>
-      <Spacing:5>
    <Label>
-      <"Invulnerable">
+      <"gamerule">
    <Header>
-      <"Invulnerable:1b">
+      <"gamerule">
    <DropDown>
+      <" ">
       <"">
-      <"">
-      <"">
+      <"announceAdvancements">
+      <"commandBlockOutput">
+      <"disableElytraMovementCheck">
+      <"doDaylightCycle">
+      <"doEntityDrops">
+      <"doFireTick">
+      <"doLimitedCrafting">
+      <"doMobLoot">
+      <"doMobSpawning">
+      <"doTileDrops">
+      <"doWeatherCycle">
+      <"KeepInventory">
+      <"logAdminCommands">
+      <"maxCommandChainLength">
+      <"maxEntityCramming">
+      <"mobGriefing">
+      <"naturalRegeneration">
+      <"randomTickSpeed">
+      <"reduceDebugInfo">
+      <"sendCommandFeedback">
+      <"showDeathMessages">
+      <"spawnRadius">
+      <"spectatorsGenerateChunks">
    <EndDropDown>
+   <VariableTemplate>
+      <"value">
+      <" ">
+      <"">
    <Color>
-      <Red:240>
-      <Blue:10>
-      <Green:10>
-<EndCommand>
-<Command>
-   <Size>
-      <Height:20>
-      <Spacing:5>
-   <Label>
-      <"NoGravity">
-   <Header>
-      <"NoGravity:1b">
-   <DropDown>
-      <"">
-      <"">
-      <"">
-   <EndDropDown>
-   <Color>
-      <Red:240>
-      <Blue:10>
-      <Green:10>
-<EndCommand>
-<Command>
-   <Size>
-      <Height:20>
-      <Spacing:5>
-   <Label>
-      <"Invisible">
-   <Header>
-      <"Invisible:1b">
-   <DropDown>
-      <"">
-      <"">
-      <"">
-   <EndDropDown>
-   <Color>
-      <Red:240>
-      <Blue:10>
-      <Green:10>
+      <Red:75>
+      <Green:100
+      <Blue:100>
 <EndCommand>
