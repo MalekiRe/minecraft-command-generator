@@ -1,5 +1,347 @@
 <Command>
    <Label>
+      <"Grouper">
+   <Header>
+      <"">
+   <VariableTemplate>
+      <"">
+      <"">
+      <"">
+   <VariableTemplate>
+      <"">
+      <"\n">
+      <"">
+   <Color>
+      <Red:200>
+      <Green:75>
+      <Blue:200>
+<EndCommand>
+<Command>
+   <Label>
+      <"selector">
+   <Header>
+      <"">
+   <DropDown>
+      <"">
+      <"">
+      <"@e">
+      <"@p">
+      <"@r">
+      <"@s">
+   <EndDropDown>
+   <VariableTemplate>
+      <"Selector">
+      <"">
+      <"">
+   <Color>
+      <Red:0>
+      <Green:25>
+      <Blue:255>
+<EndCommand>
+<Command>
+   <Label>
+      <"whisper">
+   <Header>
+      <"whisper">
+   <VariableTemplate>
+      <"player">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"msg">
+      <" ">
+      <"">
+   <Color>
+      <Red:60>
+      <Green:20>
+      <Blue:50>
+<EndCommand>
+<Command>
+   <Label>
+      <"advancement">
+   <Header>
+      <"advancement">
+   <DropDown>
+      <" ">
+      <"">
+      <"grant">
+      <"revoke">
+      <"test">
+   <EndDropDown>
+   <VariableTemplate>
+      <"player">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"advancement">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"criterion">
+      <" ">
+      <"">
+   <Color>
+      <Red:100>
+      <Green:0>
+      <Blue:0>
+<EndCommand>
+<Command>
+   <Label>
+      <"clear">
+   <Header>
+      <"clear">
+   <VariableTemplate>
+      <"player">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"item">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"DV">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"amount taken">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"data tag">
+      <" ">
+      <"">
+   <Color>
+      <Red:200>
+      <Green:0>
+      <Blue:100>
+<EndCommand>
+<Command>
+   <Label>
+      <"data block">
+   <Header>
+      <"data">
+   <DropDown>
+      <" ">
+      <"">
+      <"get">
+      <"merge">
+      <"remove">
+   <EndDropDown>
+   <VariableTemplate>
+      <"block">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"pos">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"path">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"scale">
+      <" ">
+      <"">
+   <Color>
+      <Red:100>
+      <Green:200>
+      <Blue:50>
+<EndCommand>
+<Command>
+   <Label>
+      <"data mob">
+   <Header>
+      <"data">
+   <DropDown>
+      <" ">
+      <"">
+      <"get">
+      <"merge">
+      <"remove">
+   <EndDropDown>
+   <VariableTemplate>
+      <"block">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"target">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"path">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"scale">
+      <" ">
+      <"">
+   <Color>
+      <Red:100>
+      <Green:200>
+      <Blue:50>
+<EndCommand>
+<Command>
+   <Label>
+      <"effect">
+   <Header>
+      <"effect>
+   <VariableTemplate>
+      <"player">
+      <" ">
+      <"">
+   <DropDown>
+      <" minecraft:">
+      <"">
+      <"absorption">
+      <"unluck">
+      <"bad_omen">
+      <"blindness">
+      <"conduit_power">
+      <"dolphins_grace">
+      <"fire_resistance">
+      <"glowing">
+      <"haste">
+      <"health_boost">
+      <"hero_of_the_village">
+      <"hunger">
+      <"instant_damage">
+      <"instant_health">
+      <"invisibility">
+      <"jump_boost">
+      <"levitation">
+      <"luck">
+      <"mining_fatigue">
+      <"nausea">
+      <"night_vision">
+      <"poison">
+      <"regeneration">
+      <"resistance">
+      <"saturation">
+      <"slow_falling">
+      <"slowness">
+      <"speed">
+      <"strength">
+      <"water_breathing">
+      <"weakness">
+      <"wither">
+   <EndDropDown>
+   <VariableTemplate>
+      <"amplifier">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"time">
+      <" ">
+      <"">
+   <DropDown>
+      <" ">
+      <"">
+      <"true">
+      <"false">
+   <EndDropDown>
+   <Color>
+      <Red:0>
+      <Green:100>
+      <Blue:100>
+<EndCommand>
+<Command>
+   <Label>
+      <"fill">
+   <Header>
+      <"fill">
+   <VariableTemplate>
+      <"pos1">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"pos2">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"block">
+      <" ">
+      <"">
+   <DropDown>
+      <" ">
+      <"">
+      <"destroy">
+      <"hollow">
+      <"keep">
+      <"outline">
+      <"replace">
+   <EndDropDown>
+   <Color>
+      <Red:200>
+      <Green:25>
+      <Blue:0>
+<EndCommand>
+<Command>
+   <Label>
+      <"gamemode">
+   <Header>
+      <"gamemode">
+   <DropDown>
+      <" ">
+      <"">
+      <"survival">
+      <"creative">
+      <"adventure">
+      <"spectator">
+   <EndDropDown>
+   <VariableTemplate>
+      <"Player">
+      <" ">
+      <"">
+   <Color>
+      <Red:0>
+      <Green:100>
+      <Blue:200>
+<EndCommand>
+<Command>
+   <Label>
+      <"gamerule">
+   <Header>
+      <"gamerule">
+   <DropDown>
+      <" ">
+      <"">
+      <"announceAdvancements">
+      <"commandBlockOutput">
+      <"disableElytraMovementCheck">
+      <"doDaylightCycle">
+      <"doEntityDrops">
+      <"doFireTick">
+      <"doLimitedCrafting">
+      <"doMobLoot">
+      <"doMobSpawning">
+      <"doTileDrops">
+      <"doWeatherCycle">
+      <"KeepInventory">
+      <"logAdminCommands">
+      <"maxCommandChainLength">
+      <"maxEntityCramming">
+      <"mobGriefing">
+      <"naturalRegeneration">
+      <"randomTickSpeed">
+      <"reduceDebugInfo">
+      <"sendCommandFeedback">
+      <"showDeathMessages">
+      <"spawnRadius">
+      <"spectatorsGenerateChunks">
+   <EndDropDown>
+   <VariableTemplate>
+      <"value">
+      <" ">
+      <"">
+   <Color>
+      <Red:75>
+      <Green:100
+      <Blue:100>
+<EndCommand>
+
+<Command>
+   <Label>
       <"setblock">
    <Header>
       <"setblock">
@@ -35,6 +377,10 @@
       <"@p">
       <"@r">
    <EndDropDown>
+   <VariableTemplate>
+      <"SelectorModifier">
+      <"[">
+      <"]">
    <DropDown>
       <"">
       <"">
@@ -57,8 +403,8 @@
 <EndCommand>
 <Command>
    <Size>
+      <Width:40>
       <Height:40>
-      <Spacing:10>
    <Label>
       <"Cords">
    <Header>
@@ -103,9 +449,51 @@
       <Blue:75>
 <EndCommand>
 <Command>
+   <Label>
+      <"Selector">
+   <Header>
+      <"">
+   <DropDown>
+      <"">
+      <"">
+      <"">
+      <"advancements=">
+      <"distance=">
+      <"dx=">
+      <"dy=">
+      <"dz=">
+      <"gamemode=">
+      <"level=">
+      <"limit=">
+      <"name=">
+      <"nbt=">
+      <"scores=">
+      <"tag=">
+      <"team=">
+      <"type=">
+      <"x=">
+      <"x_rotation=">
+      <"y=">
+      <"y_rotation=">
+      <"z=">
+   <EndDropDown>
+   <VariableTemplate>
+      <"selecter">
+      <"">
+      <"">
+   <VariableTemplate>
+      <"moreTags">
+      <",">
+      <"">
+   <Color>
+      <Red:0>
+      <Green:20>
+      <Blue:200>
+<EndCommand>  
+<Command>
    <Size>
+      <Width:40>
       <Height:40>
-      <Spacing:5>
    <Label>
       <"NBT">
    <Header>
@@ -125,55 +513,286 @@
 <EndCommand>
 <Command>
    <Size>
-      <Height:20>
-      <Spacing:5>
+      <Width:30>
+      <Height:30>
    <Label>
       <"Invulnerable">
    <Header>
-      <"Invulnerable:1b">
+      <"Invulnerable">
    <DropDown>
+      <":">
       <"">
-      <"">
-      <"">
+      <"1b">
    <EndDropDown>
    <Color>
-      <Red:240>
+      <Red:200>
       <Blue:10>
       <Green:10>
 <EndCommand>
 <Command>
    <Size>
-      <Height:20>
-      <Spacing:5>
+      <Width:30>
+      <Height:30>
    <Label>
       <"NoGravity">
    <Header>
-      <"NoGravity:1b">
+      <"NoGravity">
    <DropDown>
+      <":">
       <"">
-      <"">
-      <"">
+      <"1b">
    <EndDropDown>
    <Color>
-      <Red:240>
+      <Red:200>
       <Blue:10>
       <Green:10>
 <EndCommand>
 <Command>
    <Size>
-      <Height:20>
-      <Spacing:5>
+      <Width:30>
+      <Height:30>
    <Label>
       <"Invisible">
    <Header>
-      <"Invisible:1b">
+      <"Invisible">
+   <DropDown>
+      <":">
+      <"">
+      <"1b">
+   <EndDropDown>
+   <Color>
+      <Red:200>
+      <Blue:10>
+      <Green:10>
+<EndCommand>
+<Command>
+   <Size>
+      <Width:75>
+      <Height:75>
+   <Label>
+      <"Enchant">
+   <Header>
+      <"enchant">
+   <VariableTemplate>
+      <"player">
+      <" ">
+      <"">
+   <DropDown>
+      <" ">
+      <"">
+      <"aqua_affinity">
+      <"bane_of_arthropods">
+      <"blast_protection">
+      <"channeling">
+      <"binding_curse">
+      <"vanishing_curse">
+      <"depth_strider">
+      <"efficiency">
+      <"feather_falling">
+      <"fire_aspect">
+      <"fire_protection">
+      <"flame">
+      <"fortune">
+      <"frost_walker">
+      <"impaling">
+      <"infinity">
+      <"knockback">
+      <"looting">
+      <"loyalty">
+      <"luck_of_the_sea">
+      <"lure">
+      <"mending">
+      <"multishot">
+      <"piercing">
+      <"power">
+      <"projectile_protection">
+      <"protection">
+      <"punch">
+      <"quick_charge">
+      <"respiration">
+      <"riptide">
+      <"sharpness">
+      <"silk_touch">
+      <"smite">
+      <"sweeping">
+      <"thorns">
+      <"unbreaking">
+   <EndDropDown>
+   <VariableTemplate>
+      <"Level">
+      <" ">
+      <"">
+   <Color>
+      <Red:0>
+      <Green:30>
+      <Blue:200>
+<EndCommand>
+<Command>
+   <Label>
+      <"clone">
+   <Header>
+      <"clone">
+   <VariableTemplate>
+      <"begin cords">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"end cords">
+      <" ">
+      <"">
+   <VariableTemplate>
+      <"destination cords">
+      <" ">
+      <"">
    <DropDown>
       <"">
       <"">
       <"">
+      <" replace">
+      <" masked">
+   <EndDropDown>
+   <DropDown>
+      <"">
+      <"">
+      <"">
+      <" filtered">
+   <EndDropDown>
+   <VariableTemplate>
+      <"tile Name">
+      <" ">
+      <"">
+   <DropDown>   
+      <"">
+      <"">
+      <" normal">
+      <" force">
+      <" move">
    <EndDropDown>
    <Color>
-      <Red:240>
-      <Blue:10>
-      <Green:10>
+      <Red:0>
+      <Green:40>
+      <Blue:220>
+<EndCommand>
+<Command>
+   <Size>
+      <Width:50>
+      <Height:50>
+   <Label>
+      <"Entity">
+   <Header>
+      <"">
+   <DropDown>
+      <"">
+      <"">
+      <"minecraft">
+      <"">
+   <EndDropDown>   
+   <DropDown>
+      <":">
+      <"">
+      <"area_effect_cloud">
+      <"armor_stand">
+      <"arrow">
+      <"bat">
+      <"blaze">
+      <"boat">
+      <"cat">
+      <"cave_spider">
+      <"chest_minecart">
+      <"chicken">
+      <"cod">
+      <"command_block_minecart">
+      <"cow">
+      <"creeper">
+      <"dolphin">
+      <"donkey">
+      <"dragon_fireball">
+      <"drowned">
+      <"egg">
+      <"elder_guardian">
+      <"end_crystal">
+      <"ender_dragon">
+      <"ender_pearl">
+      <"enderman">
+      <"endermite">
+      <"evoker">
+      <"evoker_fangs">
+      <"experience_bottle">
+      <"experience_orb">
+      <"eye_of_ender">
+      <"falling_block">
+      <"fireball">
+      <"firework_rocket">
+      <"fox">
+      <"furnace_minecart">
+      <"ghast">
+      <"giant">
+      <"guardian">
+      <"hopper_minecart">
+      <"horse">
+      <"husk">
+      <"illusioner">
+      <"iron_golem">
+      <"item">
+      <"item_frame">
+      <"leash_knot">
+      <"lightning_bolt">
+      <"llama">
+      <"llama_spit">
+      <"magma_cube">
+      <"minecart">
+      <"mooshroom">
+      <"mule">
+      <"ocelot">
+      <"painting">
+      <"panda">
+      <"parrot">
+      <"phantom">
+      <"pig">
+      <"pillager">
+      <"polar_bear">
+      <"potion">
+      <"pufferfish">
+      <"rabbit">
+      <"ravager">
+      <"salmon">
+      <"sheep">
+      <"shulker">
+      <"shulker_bullet">
+      <"silverfish">
+      <"skeleton">
+      <"skeleton_horse">
+      <"slime">
+      <"small_fireball">
+      <"snow_golem">
+      <"snowball">
+      <"spawner_minecart">
+      <"spectral_arrow">
+      <"spider">
+      <"squid">
+      <"stray">
+      <"tnt">
+      <"tnt_minecart">
+      <"trader_llama">
+      <"trident">
+      <"tropical_fish">
+      <"turtle">
+      <"vex">
+      <"villager">
+      <"vindicator">
+      <"wandering_trader">
+      <"witch">
+      <"wither">
+      <"wither_skeleton">
+      <"wither_skull">
+      <"wolf">
+      <"zombie">
+      <"zombie_horse">
+      <"zombie_pigman">
+      <"zombie_villager">
+   <EndDropDown>
+   <Color>
+      <Red:20>
+      <Green:200>
+      <Blue:20>
 <EndCommand>

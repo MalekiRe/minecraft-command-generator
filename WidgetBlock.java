@@ -33,6 +33,7 @@ public class WidgetBlock extends WidgetClass implements Serializable
    boolean isSquished = true;
    int arrayPosition = 0;
    public WidgetWithVariable replacedVariable;
+   int dropDownMaxWidth = 0;
    
    public WidgetBlock()
    {
@@ -86,7 +87,33 @@ public class WidgetBlock extends WidgetClass implements Serializable
       }
       else
       {
+         ComboBoxModel model = variable.dropDown.getModel();
+          int size = model.getSize();
+          int textSize = 50;
+          for(int i=0;i<size;i++) {
+              Object element = model.getElementAt(i);
+              System.out.println(element.toString());
+              int sizeOfText = element.toString().length()*textSize;
+              if(variable.dropDownMaxWidth < sizeOfText)
+              {
+                  variable.dropDownMaxWidth = sizeOfText;
+              }
+              
+              //System.out.println("Element at " + i + " = " + element);
+          }
          this.add(variable.dropDown);
+         if(variable.dropDownMaxWidth > 100)
+         {
+            variable.dropDownMaxWidth /= 2;
+         }
+         if(variable.dropDownMaxWidth > 150)
+         {
+           variable.dropDownMaxWidth = variable.dropDownMaxWidth/2;
+         }
+         if(variable.dropDownMaxWidth > 150)
+         {
+           variable.dropDownMaxWidth = (int)(((double)variable.dropDownMaxWidth)*(.85));
+         }
       }
       this.variables.add(variable);
       this.reload();
@@ -200,25 +227,32 @@ public class WidgetBlock extends WidgetClass implements Serializable
          boolean doesThisHaveAWidgetBlock = false;
          int spacer = 0;//How far apart the objects should be.
          int cumulativeWidth = this.getLabelWidth();//Self-Explanitory
+         
          for(int i1 = 0; i1 < variables.size(); i1++)
          {
-
-            if(variables.get(i1).draggable == true)
+            if(variables.get(i1) instanceof WidgetWithVariable && ((WidgetWithVariable)variables.get(i1)).isUsingDropDown == true)
             {
-               variables.get(i1).setBounds(this.getX()+cumulativeWidth, this.getY()+(this.getHeight()/2)-(variables.get(i1).getHeight()/2), variables.get(i1).getWidth(), variables.get(i1).getHeight());
-               ((WidgetBlock)variables.get(i1)).replacedVariable.setBounds(-this.getX()+variables.get(i1).getX(), -this.getY()+variables.get(i1).getY(), variables.get(i1).getWidth(), variables.get(i1).getHeight());
+               variables.get(i1).setBounds(spacer+cumulativeWidth, -((this.defaultHeight-this.getHeight())/2), ((WidgetWithVariable)this.variables.get(i1)).dropDownMaxWidth, variables.get(i1).getHeight());
                cumulativeWidth += variables.get(i1).getWidth();
-               doesThisHaveAWidgetBlock = true;
             }
             else
             {
-               
-               variables.get(i1).setBounds(spacer+cumulativeWidth, -((this.defaultHeight-this.getHeight())/2), variables.get(i1).getWidth(), variables.get(i1).getHeight());
-               //this.getComponents()[i1].setBounds(spacer+cumulativeWidth, ((this.defaultHeight-this.getHeight())), variables.get(i1).getWidth(), variables.get(i1).getHeight());
-
-               cumulativeWidth += variables.get(i1).getWidth();
+               if(variables.get(i1).draggable == true)
+               {
+                  variables.get(i1).setBounds(this.getX()+cumulativeWidth, this.getY()+(this.getHeight()/2)-(variables.get(i1).getHeight()/2), variables.get(i1).getWidth(), variables.get(i1).getHeight());
+                  ((WidgetBlock)variables.get(i1)).replacedVariable.setBounds(-this.getX()+variables.get(i1).getX(), -this.getY()+variables.get(i1).getY(), variables.get(i1).getWidth(), variables.get(i1).getHeight());
+                  cumulativeWidth += variables.get(i1).getWidth();
+                  doesThisHaveAWidgetBlock = true;
+               }
+               else
+               {
+                  
+                  variables.get(i1).setBounds(spacer+cumulativeWidth, -((this.defaultHeight-this.getHeight())/2), variables.get(i1).getWidth(), variables.get(i1).getHeight());
+                  //this.getComponents()[i1].setBounds(spacer+cumulativeWidth, ((this.defaultHeight-this.getHeight())), variables.get(i1).getWidth(), variables.get(i1).getHeight());
+   
+                  cumulativeWidth += variables.get(i1).getWidth();
+               }
             }
-            
             variables.get(i1).reload();
             
          }
@@ -311,6 +345,14 @@ public class WidgetBlock extends WidgetClass implements Serializable
       
       if(this.panel != null)
       {
+         if(Math.random() >= 0.5)
+         {
+            this.playSound("Pop1.wav");
+         }
+         else
+         {
+            this.playSound("Pop2.wav");  
+         }
          this.panel.duplicateWidget(this, e.getX()+5, e.getY()+5);
       }
       if(this.allWidgetBlocks != null)

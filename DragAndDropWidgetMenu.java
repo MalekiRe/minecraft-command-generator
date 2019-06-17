@@ -42,8 +42,8 @@ public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
    Color color;
    Color borderColor = new Color(40, 200, 40);
    int borderSize = 12;
-   int widthSpacer = 20;
-   int heightSpacer = 20;
+   int widthSpacer = 30;
+   int heightSpacer = 30;
    int width;
    int height;
    public DragAndDropWidgetMenu(int width, int height, Color color, WidgetBlockArray allWidgetBlocks)
@@ -114,23 +114,25 @@ public class DragAndDropWidgetMenu extends JPanel implements MouseInputListener
          //System.out.println(cumulativeWidth);
          //System.out.println(this.width);
          //System.out.println(cumulativeWidth+this.widgetsOnPanel.get(i1).getWidth());
-         if(cumulativeWidth+this.widgetsOnPanel.get(i1).getWidth() <= this.width)
+         /*if(cumulativeWidth+this.widgetsOnPanel.get(i1).getWidth() <= this.width)
          {  
             this.widgetsOnPanel.get(i1).setX(cumulativeWidth+widthSpacer);
             this.widgetsOnPanel.get(i1).setBounds(cumulativeWidth, cumulativeHeight, this.widgetsOnPanel.get(i1).getWidth(), this.widgetsOnPanel.get(i1).getHeight());
             cumulativeWidth += this.widgetsOnPanel.get(i1).getWidth()+widthSpacer;
          }
          else
-         {  ////IMPORTANT CHANGE THIS i1-1 Later so it chatches when it is negative.
-           
+         { */ ////IMPORTANT CHANGE THIS i1-1 Later so it chatches when it is negative.
+            if(i1-1 != -1)
+            {
             cumulativeHeight += heightSpacer+this.widgetsOnPanel.get(i1-1).getHeight();
+            }
             cumulativeWidth = widthSpacer;
             this.widgetsOnPanel.get(i1).setX(cumulativeWidth);
             
             this.widgetsOnPanel.get(i1).setY(cumulativeHeight);
             this.widgetsOnPanel.get(i1).setBounds(cumulativeWidth, cumulativeHeight, this.widgetsOnPanel.get(i1).getWidth(), this.widgetsOnPanel.get(i1).getHeight());
             cumulativeWidth += this.widgetsOnPanel.get(i1).getWidth()+widthSpacer;
-         }
+         //}
          
       }
       

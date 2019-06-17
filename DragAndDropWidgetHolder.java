@@ -39,7 +39,7 @@ public class DragAndDropWidgetHolder extends JPanel
       this.setBounds(0, 0, width, height);
       dragAndDropWidgetMenu = new DragAndDropWidgetMenu(width, height, color, allWidgetBlocks);
       fullWidth = width;
-      fullHeight = 1000;
+      fullHeight = 10000;
       
       dragAndDropWidgetMenu.setPreferredSize(new Dimension( fullWidth,fullHeight));
       JScrollPane scrollFrame = new JScrollPane(dragAndDropWidgetMenu);
