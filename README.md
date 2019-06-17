@@ -100,7 +100,7 @@ So, a working command could be.
   <VariableTemplate>
     <"THIRD!">
     <"{ ">
-    <" \">
+    <" }">
   <Color>
     <Red:50>
     <Green:0>
