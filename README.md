@@ -1,6 +1,8 @@
 # minecraft-command-generator
 A scratch like interface for minecraft commands
 
+Look At The Raw To See The Proper Instructions
+
 This program is made up of two different programs. First their is the simple multiblock command generator. This program allows you to easliy create or detect minecraft structures and specifiy the file name you want to output to. The second is the true command generator. This command generator is not speicfic to minecraft commands. It takes in a file called commandGenerator and reads it using the syntax I have created. This will create little movable blocks, reminsent of scratch, which you can move around and plug into eachother. It comes pre-made with minecraft commands, but you can you it for any of your concationation needs. It allows for easy duplication, deletion, and dragging of commands. The syntax of the input file is as follows.
 
 <Label>
