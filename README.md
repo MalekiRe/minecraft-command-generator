@@ -25,7 +25,7 @@ You can chain as many of these together as you like. The second thing you can ad
   <"}">
   <"1">
   <"2">
-  <"Option 3">
+  <"Option Three">
 <EndDropDown>
 If you selected 1 on the dropdown the output would be
 "{1}"
