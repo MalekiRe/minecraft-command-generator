@@ -80,7 +80,7 @@ public class WidgetBlock extends WidgetClass implements Serializable
       variable.setBounds(10+(this.variables.size()*this.getWidth()), 0, this.getHeight(), this.getHeight());
       variable.reload();
       variable.setDefaults(variable.getX(), variable.getY(), variable.getWidth(), variable.getHeight());
-      
+      variable.blockHolder = this;
       if(variable.isUsingDropDown == false)
       {
          this.add(variable.getVariableObject());
@@ -92,7 +92,7 @@ public class WidgetBlock extends WidgetClass implements Serializable
           int textSize = 50;
           for(int i=0;i<size;i++) {
               Object element = model.getElementAt(i);
-              System.out.println(element.toString());
+              //System.out.println(element.toString());
               int sizeOfText = element.toString().length()*textSize;
               if(variable.dropDownMaxWidth < sizeOfText)
               {
@@ -192,8 +192,8 @@ public class WidgetBlock extends WidgetClass implements Serializable
       widget.reload();
       this.repaint();
       this.revalidate();
-      this.frame.repaint();
-      this.frame.revalidate();
+      this.frame.pane.repaint();
+      this.frame.pane.revalidate();
       //dummy2.setBounds(dummy2.getX(), widget.getY(), widget.getWidth(), widget.getHeight());
    }
    public String getText()
@@ -218,6 +218,33 @@ public class WidgetBlock extends WidgetClass implements Serializable
         }
         return cloned;
     }
+    public int calculateWidth(int length)
+    {
+      if(length <= 3)
+      {
+         return 70;
+      }
+      else if(length <= 4)
+      {
+         return 35*length;
+      }
+      else if(length <=5)
+      {
+         return 30*length;
+      }
+      else if(length <= 9)
+      {
+         return 15*length;
+      }
+      else if(length <= 13)
+      {
+         return 12*length;
+      }
+      else
+      {
+         return 10*length;
+      }
+    }
    public void reload() //Function to reload the widgetBlock
    {
       super.reload(); //Calls the reload from the widgetClass class
@@ -232,7 +259,8 @@ public class WidgetBlock extends WidgetClass implements Serializable
          {
             if(variables.get(i1) instanceof WidgetWithVariable && ((WidgetWithVariable)variables.get(i1)).isUsingDropDown == true)
             {
-               variables.get(i1).setBounds(spacer+cumulativeWidth, -((this.defaultHeight-this.getHeight())/2), ((WidgetWithVariable)this.variables.get(i1)).dropDownMaxWidth, variables.get(i1).getHeight());
+               //System.out.println((((WidgetWithVariable)this.variables.get(i1)).dropDown.getSelectedItem()+"").length());
+               variables.get(i1).setBounds(spacer+cumulativeWidth, -((this.defaultHeight-this.getHeight())/2), calculateWidth((((WidgetWithVariable)this.variables.get(i1)).dropDown.getSelectedItem()+"").length()), variables.get(i1).getHeight());
                cumulativeWidth += variables.get(i1).getWidth();
             }
             else
@@ -438,7 +466,7 @@ public class WidgetBlock extends WidgetClass implements Serializable
             dummy2.enable(true);
             this.isContained = false;
             
-            System.out.println(this.getWidgetVariableIndex());
+            //System.out.println(this.getWidgetVariableIndex());
             
             if(dummy2 instanceof GhostRoundedJTextField)
             {

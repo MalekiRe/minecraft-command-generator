@@ -161,7 +161,7 @@ public class FileParser
                      for(int i3 = 0; i3 < dropDownOptions.size(); i3++)
                      {
                         s1[i3] = dropDownOptions.get(i3);
-                        System.out.println(s1[i3]);
+                        //System.out.println(s1[i3]);
                      }
                      
                      commandWidgetDummy.addVariable(new VariableTemplate("", startConcat, endConcat), s1);
@@ -198,7 +198,7 @@ public class FileParser
                if(strings.get(i1+3).substring(0,12).equals("      <Blue:"))
                {
                   Blue = Integer.parseInt(strings.get(i1+3).substring(12,strings.get(i1+3).length()-1));
-                  System.out.println(Blue);
+                  //System.out.println(Blue);
                }
                commandWidgetDummy.setColor(new Color(Red, Green, Blue));
             }

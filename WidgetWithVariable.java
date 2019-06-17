@@ -21,6 +21,7 @@ public class WidgetWithVariable extends WidgetClass implements Cloneable
    boolean isUsingDropDown = true;
    JComboBox dropDown;
    int dropDownMaxWidth = 0;
+   WidgetBlock blockHolder;
    public WidgetWithVariable()
    {
       super(0);
@@ -197,6 +198,7 @@ public class WidgetWithVariable extends WidgetClass implements Cloneable
             //this.remove(variable1);
          }
       this.reload();
+      
       //variable1 = null;
    }
    public GhostRoundedJTextField getVariableObject(){return this.variable1;}

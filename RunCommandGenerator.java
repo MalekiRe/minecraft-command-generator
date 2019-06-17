@@ -32,7 +32,7 @@ public class RunCommandGenerator
       allWidgetBlocks.addCopyer(myCopyer);
       WidgetFrame frame = new WidgetFrame("Test Frame");
       frame.setSize(800, 800);
-      frame.setLayout(null);
+      //frame.setLayout(null);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.addWidgetBlockArray(allWidgetBlocks);
       DragAndDropWidgetHolder myWidgetPane = new DragAndDropWidgetHolder(600, 400, new Color(50, 100, 25), allWidgetBlocks);
@@ -46,7 +46,7 @@ public class RunCommandGenerator
       try{
       CompilationWidget compilationWidget = new CompilationWidget();
       compilationWidget.allWidgetBlocks = allWidgetBlocks;
-      frame.add(compilationWidget);
+      frame.pane.add(compilationWidget, new Integer(0), -1);
       myWidgetPane.repaint();
       frame.addMouseListener(new MouseAdapter() {
       @Override
@@ -59,13 +59,13 @@ public class RunCommandGenerator
       popupMenu.y = e.getY();
       popupMenu.numberOfPopupsMade = 0;
       }}});
-      frame.add(popupMenu);
-      frame.getLayeredPane().add(myWidgetPane, new Integer(0), -1);
+      //frame.add(popupMenu);
+      frame.pane.add(myWidgetPane, new Integer(0), -1);
       
       
       frame.setVisible(true);
-      frame.repaint();
-      frame.revalidate();
+      frame.pane.repaint();
+      frame.pane.revalidate();
       }
       catch(Exception e)
       {

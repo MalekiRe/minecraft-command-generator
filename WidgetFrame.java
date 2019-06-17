@@ -12,12 +12,20 @@ public class WidgetFrame extends JFrame implements MouseInputListener
    private ArrayList<Component> allComponents = new ArrayList<Component>();
    private WidgetBlockArray widgetBlockArray = new WidgetBlockArray();
    public int numberOfBlocksAdded = 0;
+   JScrollPane scrollFrame;
+   JLayeredPane pane = new JLayeredPane();
    public WidgetFrame()
    {
       super();
       enableInputMethods(true);   
       addMouseListener(this);
       addMouseMotionListener(this);
+      scrollFrame = new JScrollPane(this.pane);
+      pane.setAutoscrolls(true);
+      pane.setPreferredSize(new Dimension(800,800));
+      scrollFrame.setPreferredSize(new Dimension( 10000,900));
+      this.getContentPane().add(scrollFrame);
+      this.pane.setLayout(null);
    }
    public WidgetFrame(String s1)
    {
@@ -25,6 +33,13 @@ public class WidgetFrame extends JFrame implements MouseInputListener
       enableInputMethods(true);   
       addMouseListener(this);
       addMouseMotionListener(this);
+      scrollFrame = new JScrollPane(this.pane);
+      pane.setAutoscrolls(true);
+      pane.setPreferredSize(new Dimension(10000,800));
+      scrollFrame.setPreferredSize(new Dimension( 10000,900));
+      this.getContentPane().add(scrollFrame);
+      this.pane.setLayout(null);
+      
    }
    public void addWidgetBlockArray(WidgetBlockArray array)
    {
@@ -41,8 +56,8 @@ public class WidgetFrame extends JFrame implements MouseInputListener
          {
             if(((WidgetBlock)c).getIsBeingDragged())
             {
-               this.getLayeredPane().moveToFront((WidgetBlock)(c));
-               System.out.println("asdfsdfsf");
+               this.pane.moveToFront((WidgetBlock)(c));
+               //System.out.println("asdfsdfsf");
             }
          }
       }
@@ -54,7 +69,7 @@ public class WidgetFrame extends JFrame implements MouseInputListener
       for(int i1 = 0; i1 < allWidgetBlocks.size(); i1++)
       {
          allWidgetBlocks.get(i1).setWidgetFrame(this);
-         this.getLayeredPane().add(allWidgetBlocks.get(i1), numberZero, (i1*-1));
+         this.pane.add(allWidgetBlocks.get(i1), numberZero, (i1*-1));
          
          allWidgetBlocks.get(i1).layerLevel = (i1*-1);
       }
@@ -65,14 +80,18 @@ public class WidgetFrame extends JFrame implements MouseInputListener
       numberOfBlocksAdded++;
       Integer numberZero = new Integer(0);
       block.setWidgetFrame(this);
-      this.getLayeredPane().add(block, numberZero, numberOfBlocksAdded*-1);
+      this.pane.add(block, numberZero, numberOfBlocksAdded*-1);
       
       
    }
    public void addDragAndDropWidgetMenu(DragAndDropWidgetMenu menu)
    {
-      this.add(menu);
+      this.pane.add(menu, new Integer(0), -1);
       menu.frame = this;
+   }
+   public JLayeredPane getLayeredPane()
+   {
+      return this.pane;
    }
    public void mouseExited(MouseEvent e){}
    public void mouseEntered(MouseEvent e){} 
@@ -83,9 +102,14 @@ public class WidgetFrame extends JFrame implements MouseInputListener
    public void mouseDragged(MouseEvent e){}
    public static void main(String[] args)
    {
-      WidgetFrame frame = new WidgetFrame();
+      WidgetFrame frame = new WidgetFrame("sdfsd");
       frame.setSize(100, 100);
       frame.setVisible(true);
+      frame.setLayout(null);
+      WidgetBlockArray allWidgetBlocks = new WidgetBlockArray();
+      WidgetBlock widget1 = new WidgetBlock(30, 60, 700, 150);
+      allWidgetBlocks.add(widget1);
+      widget1.setWidgetFrame(frame);
    }
    
 }
