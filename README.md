@@ -9,3 +9,6 @@ https://openjdk.java.net/install/
 And same for JGrasp
 https://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html
 
+You can double click to run either jar file. The minecraft command generator requires the commandGeneratorFile file, which uses a special
+syntax I have created for making commands.
+
