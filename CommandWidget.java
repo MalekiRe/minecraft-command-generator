@@ -53,25 +53,25 @@ public class CommandWidget extends WidgetBlock implements Cloneable, Serializabl
       
       return this.header;
    }
-   public void addVariable(VariableTemplate var)
+   public void addVariable(VariableTemplate var) //Adds a variable to the variable array, and resets everythinjg to get the size looking normal
    {
       super.addVariable(var.getName());
       this.allCommandVariables.add(var);
       this.setBounds(this.getX(), this.getY(), this.allCommandVariables.size()*defaultx, defaulty);
       this.setWidth(this.allCommandVariables.size()*defaultx);
    }
-   public void addVariable(VariableTemplate var, String s1[])
+   public void addVariable(VariableTemplate var, String s1[])//Same as above but with a dropdown box.
    {
       super.addVariable(var.getName(), s1);
       this.allCommandVariables.add(var);
       this.setBounds(this.getX(), this.getY(), this.allCommandVariables.size()*defaultx, defaulty);
       this.setWidth(this.allCommandVariables.size()*defaultx);
    }
-   public String getText()
+   public String getText()//Returns the concatnated text.
    {
       String returnString = this.header;
       String startConcat = "";
-      String endConcat = "";
+      String endConcat = "";//Concatined text is made up of the eader plus the variables start concat, text, and end concat.
       for(int i2 = 0; i2 < this.variables.size(); i2++)
       {
          startConcat = allCommandVariables.get(i2).getStartConcatFunction();
@@ -91,9 +91,9 @@ public class CommandWidget extends WidgetBlock implements Cloneable, Serializabl
    } 
    public ArrayList<VariableTemplate> getAllCommandVariable()
    {
-      return this.allCommandVariables;
+      return this.allCommandVariables;//Returns all the command variables.
    }
-   public Object clone() throws
+   public Object clone() throws //Clones objefcct with shallow clone.
                    CloneNotSupportedException 
     { 
         CommandWidget cloned = (CommandWidget)super.clone();
