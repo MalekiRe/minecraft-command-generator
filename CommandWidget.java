@@ -2,28 +2,28 @@ import java.util.ArrayList;
 import java.io.Serializable;
 public class CommandWidget extends WidgetBlock implements Cloneable, Serializable
 {
-   public String header = "";
-   public ArrayList<VariableTemplate> allCommandVariables = new ArrayList<VariableTemplate>();
-   boolean isSquished = true;
-   int defaultx = 65;
+   public String header = ""; //What the command starts concatination with
+   public ArrayList<VariableTemplate> allCommandVariables = new ArrayList<VariableTemplate>(); //A list of all of the variables it has.
+   boolean isSquished = true;//Weither or not the CommandWidget is being squished.
+   int defaultx = 65;//Just easy setup for defualt x and y.
    int defaulty = 65;
    public CommandWidget()
    {
-      super(0, 0, 65, 65);
-      this.setDraggable(true);
+      super(0, 0, 65, 65);//Default x and y setup dosn't work becuase super constructor, so have to input it manually.
+      this.setDraggable(true);//Set the ability for it to be dragged around indepndily.
    }
    public CommandWidget(int x, int y, int width, int height)
    {
-      super(x, y, width, height);
+      super(x, y, width, height);//Constructre but with put in variables.
       this.setDraggable(true);
    }
-   public CommandWidget(String header, VariableTemplate... varTemplate)
+   public CommandWidget(String header, VariableTemplate... varTemplate) //Add as many variable templates ads needed to the countructer.
    {
-      super(0, 0, varTemplate.length*50, 75);
-      this.setHeader(header);
+      super(0, 0, varTemplate.length*50, 75);//Set the size so that it fits the variables.
+      this.setHeader(header);//Set the header to the header.
       for(VariableTemplate var : varTemplate)
       {
-         this.addVariable(var);
+         this.addVariable(var);//Add variables inputed into the the variables arraylist.
       }
       this.setDraggable(true);
    }
@@ -38,15 +38,16 @@ public class CommandWidget extends WidgetBlock implements Cloneable, Serializabl
    }
    public ArrayList<WidgetClass> getAllVarsInArray()
    {
-      return this.getAllVariablesInArray();
+      return this.getAllVariablesInArray(); //Returns the arraylist of variables.
    }
-   public void setHeader(String header)
+   public void setHeader(String header)//Sets the header, so it is possible ot change it later.
    {
       this.header = header;
       //this.addName(header);
    }
-   public String getHeader()
+   public String getHeader()//Gets the header, for possible later checking or concatination.
    {
+      //Also resets the bounds and the width.
       this.setBounds(this.getX(), this.getY(), this.allCommandVariables.size()*defaultx, defaulty);
       this.setWidth(this.allCommandVariables.size()*defaultx);
       
