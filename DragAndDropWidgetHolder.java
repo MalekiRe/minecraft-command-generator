@@ -29,7 +29,7 @@ import java.awt.geom.RoundRectangle2D.Float;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 public class DragAndDropWidgetHolder extends JPanel
-{
+{//Creates a JPanel with silder bars to generate 
    
    DragAndDropWidgetMenu dragAndDropWidgetMenu;
    int fullWidth;
