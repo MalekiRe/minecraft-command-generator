@@ -32,28 +32,28 @@ import java.io.*;
 import java.net.URL;
 import javax.sound.sampled.*;
 import javax.swing.*;
-public class CompilationWidget extends JButton implements ActionListener
+public class CompilationWidget extends JButton implements ActionListener//My button that compiles all the c ommands and outputs a file with the commands.
 {
    
-   WidgetBlockArray allWidgetBlocks = new WidgetBlockArray();
+   WidgetBlockArray allWidgetBlocks = new WidgetBlockArray(); //Saves all the widget blocks
    public CompilationWidget() throws IOException
    {
       this.setSize(300, 300);
       this.setBounds(0, 800-300, 300, 300);
-      this.addActionListener(this);
+      this.addActionListener(this);//Add iteslef as an actionlistener.
    }
    public void actionPerformed(ActionEvent e) 
        {
           
           try{
-           compileCommands();
+           compileCommands();//Compile commands if the action is preformed.
           }
           catch(Exception ea)
           {
             ea.printStackTrace();
           }
       }
-      public void playSound(String fileName)
+      public void playSound(String fileName)//Plays the sound of the file name.
    {
       try {
          // Open an audio input stream.
@@ -73,7 +73,7 @@ public class CompilationWidget extends JButton implements ActionListener
       }
       
    }
-   public void compileCommands()
+   public void compileCommands()//Compiles all the commads into the genreatedfunction.mcfunction file.
       throws IOException {
       try{
          this.playSound("Bell.wav");
@@ -85,7 +85,7 @@ public class CompilationWidget extends JButton implements ActionListener
          {
             int i2 = -1;
             String outputText = allWidgetBlocks.get(i1).getText();
-            i2 = allWidgetBlocks.get(i1).getText().indexOf("\\n");
+            i2 = allWidgetBlocks.get(i1).getText().indexOf("\\n");//If the compilation string has a "\n" charcter then itt put the next commands on a new line for the grouping command widget.
             if(i2 != -1)
             {
                while(i2 != -1)
